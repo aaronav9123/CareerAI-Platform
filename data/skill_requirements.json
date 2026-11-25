@@ -1,0 +1,130 @@
+{
+  "Software Engineer": {
+    "core_skills": ["Python", "Java", "C++", "SQL", "Git", "Problem Solving"],
+    "supporting_skills": ["JavaScript", "React", "Node.js", "Docker", "Linux", "HTML", "CSS", "Teamwork"],
+    "certifications": ["AWS Certified"],
+    "learning_resources": {
+      "Python": "freeCodeCamp Python / CS50",
+      "Java": "Oracle Java Tutorials",
+      "C++": "learncpp.com",
+      "SQL": "Mode SQL Tutorial",
+      "Git": "Git & GitHub official docs",
+      "Docker": "Docker Getting Started guide",
+      "React": "react.dev official tutorial",
+      "Node.js": "Node.js official docs",
+      "Linux": "Linux Journey",
+      "JavaScript": "javascript.info"
+    }
+  },
+  "ML Engineer": {
+    "core_skills": ["Python", "Machine Learning", "Deep Learning", "Data Analysis", "SQL"],
+    "supporting_skills": ["Artificial Intelligence", "Cloud Computing", "Docker", "Git", "Problem Solving"],
+    "certifications": ["Google Data Analytics", "AWS Certified"],
+    "learning_resources": {
+      "Machine Learning": "Andrew Ng's Machine Learning Specialization",
+      "Deep Learning": "deeplearning.ai courses",
+      "Data Analysis": "Kaggle Learn - Pandas",
+      "Python": "freeCodeCamp Python / CS50",
+      "SQL": "Mode SQL Tutorial",
+      "Cloud Computing": "AWS/GCP ML fundamentals",
+      "Artificial Intelligence": "fast.ai practical deep learning"
+    }
+  },
+  "Data Entry Operator": {
+    "core_skills": ["MS Office", "Excel", "Communication"],
+    "supporting_skills": ["Problem Solving", "Teamwork"],
+    "certifications": ["Tally ERP"],
+    "learning_resources": {
+      "MS Office": "Microsoft Office Learning Path",
+      "Excel": "ExcelJet / Microsoft Excel tutorials",
+      "Communication": "Coursera Business Communication"
+    }
+  },
+  "Business Analyst": {
+    "core_skills": ["Data Analysis", "Excel", "Communication", "SQL", "Problem Solving"],
+    "supporting_skills": ["Leadership", "Teamwork", "MS Office"],
+    "certifications": ["Google Data Analytics"],
+    "learning_resources": {
+      "Data Analysis": "Kaggle Learn - Pandas",
+      "SQL": "Mode SQL Tutorial",
+      "Excel": "ExcelJet / Microsoft Excel tutorials",
+      "Communication": "Coursera Business Communication"
+    }
+  },
+  "Financial Analyst": {
+    "core_skills": ["Financial Analysis", "Accounting", "Excel", "Data Analysis"],
+    "supporting_skills": ["Communication", "Problem Solving"],
+    "certifications": ["CFA Level 1"],
+    "learning_resources": {
+      "Financial Analysis": "CFI Financial Modeling courses",
+      "Accounting": "Coursera Financial Accounting",
+      "Excel": "ExcelJet / Microsoft Excel tutorials"
+    }
+  },
+  "Junior Accountant": {
+    "core_skills": ["Accounting", "Excel", "MS Office"],
+    "supporting_skills": ["Communication", "Financial Analysis"],
+    "certifications": ["Tally ERP"],
+    "learning_resources": {
+      "Accounting": "Coursera Financial Accounting",
+      "Excel": "ExcelJet / Microsoft Excel tutorials",
+      "MS Office": "Microsoft Office Learning Path"
+    }
+  },
+  "Marketing Executive": {
+    "core_skills": ["Marketing", "Communication", "Graphic Design"],
+    "supporting_skills": ["Data Analysis", "Leadership", "Teamwork"],
+    "certifications": ["Digital Marketing"],
+    "learning_resources": {
+      "Marketing": "Google Digital Garage - Fundamentals of Digital Marketing",
+      "Graphic Design": "Canva Design School",
+      "Data Analysis": "Google Analytics Academy"
+    }
+  },
+  "Sales Assistant": {
+    "core_skills": ["Communication", "Marketing", "Teamwork"],
+    "supporting_skills": ["Leadership", "Problem Solving", "MS Office"],
+    "certifications": ["Digital Marketing"],
+    "learning_resources": {
+      "Communication": "Coursera Business Communication",
+      "Marketing": "Google Digital Garage - Fundamentals of Digital Marketing"
+    }
+  },
+  "Clerk": {
+    "core_skills": ["MS Office", "Communication", "Excel"],
+    "supporting_skills": ["Teamwork", "Problem Solving"],
+    "certifications": ["Tally ERP"],
+    "learning_resources": {
+      "MS Office": "Microsoft Office Learning Path",
+      "Excel": "ExcelJet / Microsoft Excel tutorials"
+    }
+  },
+  "School Counselor": {
+    "core_skills": ["Communication", "Leadership", "Problem Solving"],
+    "supporting_skills": ["Teamwork"],
+    "certifications": ["Mental Health Basics"],
+    "learning_resources": {
+      "Communication": "Coursera Business Communication",
+      "Leadership": "Coursera Leadership courses"
+    }
+  },
+  "Professor": {
+    "core_skills": ["Communication", "Leadership", "Data Analysis"],
+    "supporting_skills": ["Problem Solving", "Teamwork"],
+    "certifications": ["Google Data Analytics"],
+    "learning_resources": {
+      "Communication": "Coursera Academic Writing",
+      "Data Analysis": "Kaggle Learn - Pandas"
+    }
+  },
+  "Research Scientist": {
+    "core_skills": ["Data Analysis", "Python", "Problem Solving", "Communication"],
+    "supporting_skills": ["Machine Learning", "SQL"],
+    "certifications": ["Google Data Analytics"],
+    "learning_resources": {
+      "Data Analysis": "Kaggle Learn - Pandas",
+      "Python": "freeCodeCamp Python / CS50",
+      "Machine Learning": "Andrew Ng's Machine Learning Specialization"
+    }
+  }
+}

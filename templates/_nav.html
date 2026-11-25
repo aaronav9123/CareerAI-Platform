@@ -1,0 +1,21 @@
+{% set A = active|default('') %}
+{% if is_admin %}
+<a class="{{ 'active' if A=='admin' }}" href="/admin">🛡 Admin Panel</a>
+<a class="{{ 'active' if A=='trends' }}" href="/market-trends">📈 Market Trends</a>
+<a href="/logout">🚪 Logout</a>
+{% else %}
+<a class="{{ 'active' if A=='dash' }}" href="/dashboard">🏠 Dashboard</a>
+<a class="{{ 'active' if A=='resume' }}" href="/resume-upload">📄 Resume Analyzer</a>
+<a class="{{ 'active' if A=='predict' }}" href="/predict">🎯 Career Prediction</a>
+<a class="{{ 'active' if A=='roadmap' }}" href="/roadmap">🗺 Career Roadmap</a>
+<a class="{{ 'active' if A=='skillgap' }}" href="/skill-gap">📊 Skill Gap Analysis</a>
+<a class="{{ 'active' if A=='ats' }}" href="/ats-score">🧾 ATS Resume Score</a>
+<a class="{{ 'active' if A=='jd' }}" href="/jd-match">🔍 Job Description Match</a>
+<a class="{{ 'active' if A=='improve' }}" href="/resume-improve">✨ Resume Improver</a>
+<a class="{{ 'active' if A=='interview' }}" href="/interview">🎤 Mock Interview</a>
+<a class="{{ 'active' if A=='projects' }}" href="/projects">🛠 Project Recommendations</a>
+<a class="{{ 'active' if A=='jobs' }}" href="/jobs">💼 Job Matching</a>
+<a class="{{ 'active' if A=='trends' }}" href="/market-trends">📈 Market Trends</a>
+<a class="{{ 'active' if A=='profile' }}" href="/profile">👤 Profile</a>
+<a href="/logout">🚪 Logout</a>
+{% endif %}

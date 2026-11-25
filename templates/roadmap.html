@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Career Roadmap | CareerAI</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='roadmap.css') }}">
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='scroll-effects.css') }}">
+
+<link rel="stylesheet" href="{{ url_for('static', filename='extras.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="sidebar">
+
+        <div class="logo">
+            <h2>🧭 CareerAI</h2>
+            <p>Find Your Future</p>
+        </div>
+
+        {% set active='roadmap' %}{% include '_nav.html' %}
+
+    </div>
+
+    <div class="main">
+
+        {% if career %}
+
+            <span class="eyebrow">Personalised for you</span>
+            <h1>Roadmap to {{ career }}</h1>
+            <p>Built from your most recent Career Prediction.</p>
+
+        {% else %}
+
+            <span class="eyebrow">Getting started</span>
+            <h1>General Career Roadmap</h1>
+            <p>
+                Run the <a href="/predict">Career Prediction</a> to unlock a
+                roadmap tailored to your recommended career.
+            </p>
+
+        {% endif %}
+
+        {% include '_flash.html' %}
+
+        {% if career %}
+        <div class="tracker-card" data-reveal="up">
+            <div class="tracker-row">
+                <div>
+                    <div class="tracker-label">Roadmap progress</div>
+                    <div class="tracker-value"><span id="pctText">{{ pct }}</span>%
+                        <small id="countText">{{ done|length }} of {{ total }} steps done</small></div>
+                </div>
+                <div>
+                    <div class="tracker-label">Career readiness</div>
+                    <div class="tracker-value"><span id="readyText">{{ readiness }}</span>%
+                        <small><a href="/skill-gap">view skill gap</a></small></div>
+                </div>
+            </div>
+            <div class="bar-track"><div class="bar-fill" id="pctBar" style="width:{{ pct }}%"></div></div>
+            <p class="tracker-hint">Tick off steps as you complete them. Steps that name a skill for this career
+                (shown as <span class="tag-learned">counts: …</span>) also raise your readiness score.</p>
+        </div>
+        {% endif %}
+
+        <div class="roadmap" data-reveal-group>
+
+            {% for stage_title, items in stages %}
+
+            <div class="step">
+                <h2>{{ stage_title }}</h2>
+                <ul class="check-list">
+                    {% for item in items %}
+                    <li>
+                        {% if career %}
+                        <label class="check-row">
+                            <input type="checkbox" class="rm-check" data-item="{{ item }}" {% if item in done %}checked{% endif %}>
+                            <span class="check-text">{{ item }}</span>
+                        </label>
+                        {% if linked.get(item) %}<span class="tag-learned">counts: {{ linked[item]|join(', ') }}</span>{% endif %}
+                        {% else %}
+                        {{ item }}
+                        {% endif %}
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+        {% if not career %}
+        <a href="/predict" class="predict-cta">🎯 Run Career Prediction →</a>
+        {% endif %}
+
+    </div>
+
+</div>
+
+<meta name="csrf-token" content="{{ csrf_token() }}">
+<script>
+document.querySelectorAll('.rm-check').forEach(function (box) {
+    box.addEventListener('change', function () {
+        var csrf = document.querySelector('meta[name=csrf-token]').content;
+        box.disabled = true;
+        fetch('/api/progress/toggle', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json', 'X-CSRF-Token': csrf},
+            body: JSON.stringify({item: box.dataset.item, done: box.checked})
+        }).then(function (r) { return r.json(); }).then(function (d) {
+            if (d.error) { box.checked = !box.checked; alert(d.error); return; }
+            document.getElementById('pctText').textContent = d.pct;
+            document.getElementById('pctBar').style.width = d.pct + '%';
+            document.getElementById('countText').textContent = d.done + ' of ' + d.total + ' steps done';
+            document.getElementById('readyText').textContent = d.readiness;
+        }).catch(function () { box.checked = !box.checked; alert('Could not save - check your connection.'); })
+          .finally(function () { box.disabled = false; });
+    });
+});
+</script>
+<script src="{{ url_for('static', filename='scroll.js') }}" defer></script>
+
+</body>
+</html>

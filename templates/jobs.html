@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Job Matching | CareerAI</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='features.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='extras.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='scroll-effects.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="sidebar">
+
+        <div class="logo">
+            <h2>🧭 CareerAI</h2>
+            <p>Find Your Future</p>
+        </div>
+
+        {% set active='jobs' %}{% include '_nav.html' %}
+
+    </div>
+
+    <div class="main">
+
+
+        {% if meta.live %}
+        <span class="eyebrow">Live listings · {{ meta.source }}</span>
+        {% else %}
+        <span class="eyebrow">Sample listings</span>
+        {% endif %}
+        <h1>Jobs Matched to {{ career }}</h1>
+        <p class="lede">
+            Ranked by how closely your skills match each role (semantic matching, so "ML" counts as "Machine Learning").
+            {% if meta.live %}
+                {% if meta.total_openings %}{{ "{:,}".format(meta.total_openings) }} openings found; showing the best matches.{% endif %}
+            {% else %}
+                Salary ranges are illustrative sample data.
+                {% if not adzuna %}Add free Adzuna API keys in <code>.env</code> to switch this page to live listings.{% endif %}
+            {% endif %}
+        </p>
+
+        {% if meta.error %}<div class="notice-card warn">{{ meta.error }}</div>{% endif %}
+
+        {% if adzuna %}
+        <form method="GET" action="/jobs" class="search-bar">
+            <input type="text" name="location" value="{{ location }}" placeholder="Filter by city, e.g. Bengaluru, Kochi, Pune" maxlength="60">
+            <button type="submit" class="cta-link small">Search</button>
+        </form>
+        {% endif %}
+
+        {% for job in jobs %}
+        <div class="job-card {% if job.same_career %}highlight{% endif %}">
+
+            <div class="job-info">
+                <h3>{{ job.title }}</h3>
+                <div class="job-career">
+                    {% if job.company %}{{ job.company }}{% if job.location %} · {{ job.location }}{% endif %}{% else %}{{ job.career }}{% endif %}
+                    {% if job.posted %} · posted {{ job.posted }}{% endif %}
+                </div>
+
+                {% if job.snippet %}<p class="job-snippet">{{ job.snippet }}…</p>{% endif %}
+
+                <div class="job-skills">
+                    {% for skill in job.required_skills %}
+                    <span class="{% if skill in job.matched_skills %}skill-tag{% else %}skill-missing{% endif %}">{{ skill }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="job-meta">
+                <div class="match-label">Skill Match</div>
+                <div class="match-pct">{{ job.match_percentage }}%</div>
+                <div class="salary">{{ job.salary_range }}</div>
+                <div class="exp-level">{{ job.experience_level }}</div>
+                {% if job.url %}<a class="apply-link" href="{{ job.url }}" target="_blank" rel="noopener noreferrer">Apply ↗</a>{% endif %}
+            </div>
+
+        </div>
+        {% else %}
+        <div class="notice-card">No listings found{% if location %} for "{{ location }}"{% endif %}. Try a broader location.</div>
+        {% endfor %}
+
+        {% if meta.live %}<p class="fine-print">Listings provided by Adzuna.</p>{% endif %}
+
+        <a href="/skill-gap" class="cta-link">📊 Revisit Skill Gap Analysis →</a>
+
+
+    </div>
+
+</div>
+
+
+<script src="{{ url_for('static', filename='scroll.js') }}" defer></script>
+
+</body>
+</html>

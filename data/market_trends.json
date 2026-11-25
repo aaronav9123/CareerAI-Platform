@@ -1,0 +1,316 @@
+{
+ "_meta": {
+  "years": [
+   2020,
+   2021,
+   2022,
+   2023,
+   2024,
+   2025
+  ],
+  "note": "Indicative, illustrative estimates for Indian entry-to-senior roles compiled for this project. They are NOT official statistics - replace with data from a source you can cite (e.g. Naukri JobSpeak, LinkedIn Economic Graph, NASSCOM) before quoting them in your report.",
+  "salary_unit": "LPA (lakh rupees per annum)"
+ },
+ "careers": {
+  "Software Engineer": {
+   "demand_index": 92,
+   "yoy_growth_pct": 18,
+   "salary_lpa": {
+    "entry": 4,
+    "mid": 10,
+    "senior": 25
+   },
+   "demand_series": [
+    100,
+    118,
+    128,
+    125,
+    138,
+    150
+   ],
+   "top_skills": [
+    "Python",
+    "Java",
+    "SQL",
+    "Git",
+    "Docker",
+    "React"
+   ],
+   "outlook": "Consistently high demand across product companies, services firms and startups; cloud and backend skills lead."
+  },
+  "ML Engineer": {
+   "demand_index": 88,
+   "yoy_growth_pct": 32,
+   "salary_lpa": {
+    "entry": 6,
+    "mid": 16,
+    "senior": 40
+   },
+   "demand_series": [
+    100,
+    125,
+    150,
+    160,
+    190,
+    230
+   ],
+   "top_skills": [
+    "Python",
+    "Machine Learning",
+    "Deep Learning",
+    "SQL",
+    "Docker",
+    "Cloud Computing"
+   ],
+   "outlook": "Fastest-growing family of roles; MLOps and generative-AI experience is increasingly asked for."
+  },
+  "Data Entry Operator": {
+   "demand_index": 55,
+   "yoy_growth_pct": -4,
+   "salary_lpa": {
+    "entry": 1.8,
+    "mid": 2.6,
+    "senior": 4
+   },
+   "demand_series": [
+    100,
+    98,
+    96,
+    92,
+    90,
+    88
+   ],
+   "top_skills": [
+    "Excel",
+    "MS Office",
+    "Typing",
+    "Data Validation",
+    "Attention to Detail"
+   ],
+   "outlook": "Declining as automation takes over routine entry; people who add Excel/SQL/reporting skills move up."
+  },
+  "Business Analyst": {
+   "demand_index": 80,
+   "yoy_growth_pct": 14,
+   "salary_lpa": {
+    "entry": 4,
+    "mid": 9,
+    "senior": 22
+   },
+   "demand_series": [
+    100,
+    110,
+    118,
+    122,
+    130,
+    138
+   ],
+   "top_skills": [
+    "SQL",
+    "Excel",
+    "Power BI",
+    "Communication",
+    "Data Analysis"
+   ],
+   "outlook": "Steady demand in IT services, banking and consulting; BI-tool skills are the main differentiator."
+  },
+  "Financial Analyst": {
+   "demand_index": 74,
+   "yoy_growth_pct": 9,
+   "salary_lpa": {
+    "entry": 4,
+    "mid": 8,
+    "senior": 20
+   },
+   "demand_series": [
+    100,
+    104,
+    109,
+    112,
+    116,
+    120
+   ],
+   "top_skills": [
+    "Excel",
+    "Financial Analysis",
+    "Accounting",
+    "Forecasting",
+    "Power BI"
+   ],
+   "outlook": "Stable demand; CFA/FRM progress and strong Excel modelling matter most."
+  },
+  "Junior Accountant": {
+   "demand_index": 68,
+   "yoy_growth_pct": 5,
+   "salary_lpa": {
+    "entry": 2.2,
+    "mid": 3.6,
+    "senior": 8
+   },
+   "demand_series": [
+    100,
+    102,
+    104,
+    106,
+    108,
+    110
+   ],
+   "top_skills": [
+    "Tally ERP",
+    "Accounting",
+    "GST",
+    "Excel",
+    "MS Office"
+   ],
+   "outlook": "Reliable entry-level demand; GST/Tally fluency and articleship progress improve pay quickly."
+  },
+  "Marketing Executive": {
+   "demand_index": 72,
+   "yoy_growth_pct": 11,
+   "salary_lpa": {
+    "entry": 2.5,
+    "mid": 5,
+    "senior": 14
+   },
+   "demand_series": [
+    100,
+    106,
+    112,
+    118,
+    124,
+    130
+   ],
+   "top_skills": [
+    "Digital Marketing",
+    "SEO",
+    "Content",
+    "Analytics",
+    "Communication"
+   ],
+   "outlook": "Growth is concentrated in digital, performance and content roles; data-literate marketers earn more."
+  },
+  "Sales Assistant": {
+   "demand_index": 70,
+   "yoy_growth_pct": 4,
+   "salary_lpa": {
+    "entry": 1.8,
+    "mid": 3,
+    "senior": 6
+   },
+   "demand_series": [
+    100,
+    101,
+    103,
+    104,
+    106,
+    107
+   ],
+   "top_skills": [
+    "Communication",
+    "Negotiation",
+    "CRM",
+    "Customer Service"
+   ],
+   "outlook": "Large number of openings in retail/e-commerce; CRM skills and consistent targets lead to promotion."
+  },
+  "Clerk": {
+   "demand_index": 50,
+   "yoy_growth_pct": -2,
+   "salary_lpa": {
+    "entry": 1.8,
+    "mid": 2.8,
+    "senior": 5
+   },
+   "demand_series": [
+    100,
+    99,
+    98,
+    96,
+    95,
+    94
+   ],
+   "top_skills": [
+    "MS Office",
+    "Record Keeping",
+    "Communication",
+    "Typing"
+   ],
+   "outlook": "Mostly government and bank-exam driven; private-sector roles are shrinking with digitisation."
+  },
+  "School Counselor": {
+   "demand_index": 58,
+   "yoy_growth_pct": 12,
+   "salary_lpa": {
+    "entry": 2.4,
+    "mid": 4,
+    "senior": 8
+   },
+   "demand_series": [
+    100,
+    104,
+    110,
+    116,
+    122,
+    128
+   ],
+   "top_skills": [
+    "Counselling",
+    "Communication",
+    "Empathy",
+    "Psychology",
+    "Career Guidance"
+   ],
+   "outlook": "Rising awareness of student mental health is slowly increasing school and ed-tech hiring."
+  },
+  "Professor": {
+   "demand_index": 52,
+   "yoy_growth_pct": 6,
+   "salary_lpa": {
+    "entry": 5,
+    "mid": 10,
+    "senior": 20
+   },
+   "demand_series": [
+    100,
+    101,
+    104,
+    106,
+    108,
+    110
+   ],
+   "top_skills": [
+    "Research",
+    "Teaching",
+    "Publications",
+    "Subject Expertise",
+    "Communication"
+   ],
+   "outlook": "Competitive; PhD plus NET/SET and publications are usually required for permanent posts."
+  },
+  "Research Scientist": {
+   "demand_index": 64,
+   "yoy_growth_pct": 15,
+   "salary_lpa": {
+    "entry": 5,
+    "mid": 12,
+    "senior": 30
+   },
+   "demand_series": [
+    100,
+    106,
+    114,
+    122,
+    130,
+    140
+   ],
+   "top_skills": [
+    "Research Methods",
+    "Python",
+    "Statistics",
+    "Scientific Writing",
+    "Data Analysis"
+   ],
+   "outlook": "Growth in industry R&D and AI research; strong publication record and coding skills help."
+  }
+ }
+}

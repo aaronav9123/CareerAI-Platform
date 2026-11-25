@@ -1,0 +1,47 @@
+/* ================= CAREERAI DESIGN TOKENS =================
+   Signature concept: "The Career Compass" — a dotted route line
+   with numbered waypoints runs through the hero and the How It
+   Works section, reappearing as the scroll-progress indicator.
+   Palette avoids default SaaS navy/cyan in favour of a warm ink
+   background with a beacon-amber wayfinding accent and a quiet
+   route-teal for the path itself.
+============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root{
+
+    /* --- surfaces --- */
+    --ink:        #13131b;   /* page background — warm near-black, not navy */
+    --ink-raised: #1b1b26;   /* panel / card background */
+    --ink-hover:  #22222f;   /* hovered panel */
+    --line:       rgba(245,243,238,.09);
+    --line-strong:rgba(245,243,238,.18);
+
+    /* --- text --- */
+    --text:       #f5f3ee;  /* warm off-white, not pure #fff */
+    --text-muted: #a3a0ad;
+    --text-faint: #706d7a;
+
+    /* --- accents --- */
+    --beacon:     #f2a93b;  /* primary: guidance / call to action */
+    --beacon-dim: #c9862a;
+    --beacon-ink: #1a1206;  /* text-on-beacon */
+    --route:      #4fd1c5;  /* secondary: the "path", success, links */
+    --route-dim:  #2f9d93;
+    --danger:     #f0736a;
+
+    /* --- type --- */
+    --font-display: 'Fraunces', Georgia, serif;
+    --font-body:    'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono:    'JetBrains Mono', ui-monospace, Menlo, monospace;
+
+    /* --- shape --- */
+    --radius-sm: 10px;
+    --radius-md: 16px;
+    --radius-lg: 26px;
+
+    /* --- shadow --- */
+    --shadow-card: 0 12px 32px rgba(0,0,0,.35);
+    --shadow-pop:  0 20px 48px rgba(0,0,0,.45);
+}

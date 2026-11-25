@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project Recommendations | CareerAI</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='features.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='scroll-effects.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='extras.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="sidebar">
+
+        <div class="logo">
+            <h2>🧭 CareerAI</h2>
+            <p>Find Your Future</p>
+        </div>
+
+        {% set active='projects' %}{% include '_nav.html' %}
+
+    </div>
+
+    <div class="main">
+
+        <span class="eyebrow">Build your portfolio</span>
+        <h1>Projects for {{ career }}</h1>
+        <p class="lede">Hands-on projects, grouped by difficulty, to build real proof of your skills for this career.</p>
+
+        {% for tier in ["beginner", "intermediate", "advanced"] %}
+        {% if projects.get(tier) %}
+        <div class="project-tier" data-reveal="up">
+
+            <h2>
+                {% if tier == "beginner" %}🌱{% elif tier == "intermediate" %}🚀{% else %}🏆{% endif %}
+                {{ tier | capitalize }}
+                <span class="tier-badge {{ tier }}">{{ tier }}</span>
+            </h2>
+
+            <div class="project-grid">
+                {% for project in projects[tier] %}
+                <div class="project-card">
+                    <h3>{{ project.title }}</h3>
+                    <p>{{ project.description }}</p>
+                    <div>
+                        {% for skill in project.skills_learned %}
+                        <span class="skill-tag">{{ skill }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+        </div>
+        {% endif %}
+        {% endfor %}
+
+        <a href="/jobs" class="cta-link">💼 See Matching Jobs →</a>
+
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='scroll.js') }}" defer></script>
+
+</body>
+</html>

@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ code }} | CareerAI</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head><body>
+<div class="auth-container"><div class="auth-card">
+<h2>{{ code }}</h2>
+<p>{{ message }}</p>
+<div class="bottom-text"><a href="{{ '/admin' if is_admin else '/dashboard' }}">{{ 'Back to admin panel' if is_admin else 'Back to dashboard' }}</a></div>
+</div></div></body></html>

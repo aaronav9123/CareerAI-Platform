@@ -1,0 +1,883 @@
+{
+ "technical": {
+  "Software Engineer": [
+   {
+    "q": "Explain the difference between a process and a thread.",
+    "keywords": [
+     "process",
+     "thread",
+     "memory",
+     "concurrency",
+     "context switch",
+     "shared"
+    ]
+   },
+   {
+    "q": "What is the time complexity of searching in a hash map versus a sorted array, and why?",
+    "keywords": [
+     "o(1)",
+     "o(log n)",
+     "hash",
+     "binary search",
+     "collision",
+     "average"
+    ]
+   },
+   {
+    "q": "What are the four pillars of object-oriented programming? Give an example of one.",
+    "keywords": [
+     "encapsulation",
+     "inheritance",
+     "polymorphism",
+     "abstraction",
+     "class",
+     "object"
+    ]
+   },
+   {
+    "q": "What is a REST API and what do the common HTTP methods do?",
+    "keywords": [
+     "get",
+     "post",
+     "put",
+     "delete",
+     "stateless",
+     "resource",
+     "status code"
+    ]
+   },
+   {
+    "q": "How do you debug a function that returns wrong results only for some inputs?",
+    "keywords": [
+     "reproduce",
+     "test",
+     "breakpoint",
+     "log",
+     "edge case",
+     "isolate",
+     "unit test"
+    ]
+   },
+   {
+    "q": "What is Git branching and how would you resolve a merge conflict?",
+    "keywords": [
+     "branch",
+     "merge",
+     "conflict",
+     "commit",
+     "pull request",
+     "rebase"
+    ]
+   }
+  ],
+  "ML Engineer": [
+   {
+    "q": "What is overfitting and how can you prevent it?",
+    "keywords": [
+     "overfitting",
+     "regularization",
+     "cross-validation",
+     "dropout",
+     "more data",
+     "early stopping",
+     "validation"
+    ]
+   },
+   {
+    "q": "Explain the bias-variance trade-off.",
+    "keywords": [
+     "bias",
+     "variance",
+     "underfitting",
+     "overfitting",
+     "complexity",
+     "generalization"
+    ]
+   },
+   {
+    "q": "How do you evaluate a classifier on imbalanced data?",
+    "keywords": [
+     "precision",
+     "recall",
+     "f1",
+     "roc",
+     "auc",
+     "confusion matrix",
+     "resampling",
+     "smote"
+    ]
+   },
+   {
+    "q": "What is the difference between bagging and boosting?",
+    "keywords": [
+     "bagging",
+     "boosting",
+     "random forest",
+     "gradient",
+     "variance",
+     "bias",
+     "ensemble"
+    ]
+   },
+   {
+    "q": "Describe how you would take a trained model to production.",
+    "keywords": [
+     "api",
+     "docker",
+     "monitoring",
+     "drift",
+     "versioning",
+     "pipeline",
+     "retrain",
+     "latency"
+    ]
+   },
+   {
+    "q": "What is gradient descent and what does the learning rate do?",
+    "keywords": [
+     "gradient",
+     "loss",
+     "learning rate",
+     "converge",
+     "step",
+     "minimum",
+     "overshoot"
+    ]
+   }
+  ],
+  "Data Entry Operator": [
+   {
+    "q": "How do you make sure your data entry work is accurate?",
+    "keywords": [
+     "double-check",
+     "verify",
+     "validation",
+     "review",
+     "accuracy",
+     "checklist",
+     "source"
+    ]
+   },
+   {
+    "q": "Which Excel functions do you use most and why?",
+    "keywords": [
+     "vlookup",
+     "sum",
+     "if",
+     "filter",
+     "pivot",
+     "sort",
+     "formula",
+     "xlookup"
+    ]
+   },
+   {
+    "q": "How do you handle a large batch of work under a tight deadline?",
+    "keywords": [
+     "prioritize",
+     "plan",
+     "break",
+     "accuracy",
+     "time",
+     "communicate",
+     "focus"
+    ]
+   },
+   {
+    "q": "What would you do if you found inconsistent data in a source document?",
+    "keywords": [
+     "verify",
+     "report",
+     "supervisor",
+     "document",
+     "clarify",
+     "not assume",
+     "flag"
+    ]
+   },
+   {
+    "q": "Why is data confidentiality important in this role?",
+    "keywords": [
+     "confidential",
+     "privacy",
+     "access",
+     "sensitive",
+     "policy",
+     "secure",
+     "trust"
+    ]
+   }
+  ],
+  "Business Analyst": [
+   {
+    "q": "How do you gather requirements from stakeholders who disagree?",
+    "keywords": [
+     "stakeholder",
+     "requirements",
+     "prioritize",
+     "workshop",
+     "document",
+     "consensus",
+     "negotiate"
+    ]
+   },
+   {
+    "q": "Explain the difference between a functional and a non-functional requirement.",
+    "keywords": [
+     "functional",
+     "non-functional",
+     "performance",
+     "security",
+     "feature",
+     "usability",
+     "example"
+    ]
+   },
+   {
+    "q": "What SQL query would you write to find the top 5 customers by revenue?",
+    "keywords": [
+     "select",
+     "group by",
+     "order by",
+     "limit",
+     "sum",
+     "join",
+     "desc"
+    ]
+   },
+   {
+    "q": "How would you investigate a sudden drop in weekly sales?",
+    "keywords": [
+     "data",
+     "segment",
+     "trend",
+     "root cause",
+     "compare",
+     "hypothesis",
+     "dashboard",
+     "time period"
+    ]
+   },
+   {
+    "q": "What is a use case or user story, and how do you write a good one?",
+    "keywords": [
+     "user story",
+     "acceptance criteria",
+     "actor",
+     "goal",
+     "as a",
+     "value",
+     "use case"
+    ]
+   },
+   {
+    "q": "Which tools do you use for visualising data and why?",
+    "keywords": [
+     "power bi",
+     "tableau",
+     "excel",
+     "dashboard",
+     "chart",
+     "insight",
+     "audience"
+    ]
+   }
+  ],
+  "Financial Analyst": [
+   {
+    "q": "Walk me through the three financial statements and how they connect.",
+    "keywords": [
+     "income statement",
+     "balance sheet",
+     "cash flow",
+     "net income",
+     "retained earnings",
+     "assets",
+     "liabilities"
+    ]
+   },
+   {
+    "q": "What is DCF valuation?",
+    "keywords": [
+     "discounted",
+     "cash flow",
+     "wacc",
+     "terminal value",
+     "present value",
+     "forecast",
+     "discount rate"
+    ]
+   },
+   {
+    "q": "How would you analyse whether a company is financially healthy?",
+    "keywords": [
+     "ratio",
+     "liquidity",
+     "profitability",
+     "debt",
+     "trend",
+     "cash flow",
+     "benchmark"
+    ]
+   },
+   {
+    "q": "What is the difference between EBITDA and net income?",
+    "keywords": [
+     "ebitda",
+     "interest",
+     "taxes",
+     "depreciation",
+     "amortization",
+     "net income",
+     "profit"
+    ]
+   },
+   {
+    "q": "How do you build a budget forecast in Excel?",
+    "keywords": [
+     "assumptions",
+     "historical",
+     "drivers",
+     "scenario",
+     "formula",
+     "variance",
+     "sensitivity"
+    ]
+   }
+  ],
+  "Junior Accountant": [
+   {
+    "q": "What is the accounting equation?",
+    "keywords": [
+     "assets",
+     "liabilities",
+     "equity",
+     "balance",
+     "double entry",
+     "debit",
+     "credit"
+    ]
+   },
+   {
+    "q": "Explain debit and credit with an example.",
+    "keywords": [
+     "debit",
+     "credit",
+     "account",
+     "entry",
+     "increase",
+     "decrease",
+     "ledger"
+    ]
+   },
+   {
+    "q": "How do you perform a bank reconciliation?",
+    "keywords": [
+     "bank statement",
+     "ledger",
+     "outstanding",
+     "match",
+     "difference",
+     "adjust",
+     "cheque"
+    ]
+   },
+   {
+    "q": "What is GST/VAT and how is it recorded?",
+    "keywords": [
+     "input",
+     "output",
+     "tax",
+     "invoice",
+     "return",
+     "credit",
+     "filing"
+    ]
+   },
+   {
+    "q": "What would you do if the trial balance does not tally?",
+    "keywords": [
+     "trial balance",
+     "recheck",
+     "posting",
+     "transposition",
+     "error",
+     "suspense",
+     "ledger"
+    ]
+   }
+  ],
+  "Marketing Executive": [
+   {
+    "q": "How would you plan a digital campaign for a new product?",
+    "keywords": [
+     "audience",
+     "goal",
+     "channel",
+     "budget",
+     "content",
+     "kpi",
+     "timeline",
+     "measure"
+    ]
+   },
+   {
+    "q": "Which metrics would you track to judge campaign success?",
+    "keywords": [
+     "ctr",
+     "conversion",
+     "roi",
+     "reach",
+     "engagement",
+     "cac",
+     "impressions"
+    ]
+   },
+   {
+    "q": "What is SEO and how is it different from SEM?",
+    "keywords": [
+     "organic",
+     "paid",
+     "keywords",
+     "ranking",
+     "search",
+     "ads",
+     "content"
+    ]
+   },
+   {
+    "q": "How do you define a target audience?",
+    "keywords": [
+     "demographics",
+     "persona",
+     "research",
+     "needs",
+     "segment",
+     "behaviour",
+     "data"
+    ]
+   },
+   {
+    "q": "Tell me about a marketing campaign you admire and why it worked.",
+    "keywords": [
+     "message",
+     "audience",
+     "emotion",
+     "channel",
+     "result",
+     "creative",
+     "brand"
+    ]
+   }
+  ],
+  "Sales Assistant": [
+   {
+    "q": "How do you greet and assess the needs of a customer?",
+    "keywords": [
+     "greet",
+     "listen",
+     "questions",
+     "needs",
+     "friendly",
+     "understand",
+     "recommend"
+    ]
+   },
+   {
+    "q": "How do you handle a customer objection about price?",
+    "keywords": [
+     "value",
+     "listen",
+     "benefits",
+     "alternative",
+     "empathy",
+     "compare",
+     "quality"
+    ]
+   },
+   {
+    "q": "What would you do if a customer is angry about a faulty product?",
+    "keywords": [
+     "calm",
+     "apologize",
+     "listen",
+     "solution",
+     "refund",
+     "replace",
+     "escalate"
+    ]
+   },
+   {
+    "q": "How do you upsell without being pushy?",
+    "keywords": [
+     "relevant",
+     "benefit",
+     "need",
+     "suggest",
+     "bundle",
+     "trust",
+     "customer"
+    ]
+   },
+   {
+    "q": "How do you handle meeting a daily sales target?",
+    "keywords": [
+     "plan",
+     "follow up",
+     "prioritize",
+     "track",
+     "customers",
+     "motivated",
+     "goal"
+    ]
+   }
+  ],
+  "Clerk": [
+   {
+    "q": "How do you organise and file documents so they are easy to find?",
+    "keywords": [
+     "system",
+     "label",
+     "index",
+     "alphabetical",
+     "digital",
+     "archive",
+     "categories"
+    ]
+   },
+   {
+    "q": "What is your approach when several urgent tasks arrive at once?",
+    "keywords": [
+     "prioritize",
+     "urgent",
+     "important",
+     "communicate",
+     "list",
+     "deadline",
+     "ask"
+    ]
+   },
+   {
+    "q": "Which MS Office tools have you used and for what?",
+    "keywords": [
+     "word",
+     "excel",
+     "outlook",
+     "powerpoint",
+     "letters",
+     "spreadsheet",
+     "email"
+    ]
+   },
+   {
+    "q": "How do you handle confidential records?",
+    "keywords": [
+     "confidential",
+     "access",
+     "secure",
+     "policy",
+     "locked",
+     "authorized",
+     "discretion"
+    ]
+   },
+   {
+    "q": "How do you make sure a letter or report has no errors?",
+    "keywords": [
+     "proofread",
+     "check",
+     "spell",
+     "format",
+     "review",
+     "template",
+     "second pair"
+    ]
+   }
+  ],
+  "School Counselor": [
+   {
+    "q": "How would you build trust with a student who is reluctant to talk?",
+    "keywords": [
+     "listen",
+     "rapport",
+     "empathy",
+     "patience",
+     "confidential",
+     "non-judgmental",
+     "safe"
+    ]
+   },
+   {
+    "q": "What would you do if a student discloses they may harm themselves?",
+    "keywords": [
+     "safety",
+     "report",
+     "protocol",
+     "parents",
+     "supervisor",
+     "immediately",
+     "support",
+     "referral"
+    ]
+   },
+   {
+    "q": "How do you guide a student who is unsure about their career?",
+    "keywords": [
+     "interests",
+     "strengths",
+     "assessment",
+     "options",
+     "explore",
+     "goals",
+     "information"
+    ]
+   },
+   {
+    "q": "How do you handle conflict between two students?",
+    "keywords": [
+     "listen",
+     "both sides",
+     "mediate",
+     "neutral",
+     "resolution",
+     "respect",
+     "follow up"
+    ]
+   },
+   {
+    "q": "Why is confidentiality important, and when can it be broken?",
+    "keywords": [
+     "confidential",
+     "trust",
+     "harm",
+     "safety",
+     "legal",
+     "policy",
+     "limits"
+    ]
+   }
+  ],
+  "Professor": [
+   {
+    "q": "How do you design a course syllabus?",
+    "keywords": [
+     "objectives",
+     "outcomes",
+     "assessment",
+     "schedule",
+     "topics",
+     "resources",
+     "feedback"
+    ]
+   },
+   {
+    "q": "How do you engage a class with mixed ability levels?",
+    "keywords": [
+     "differentiate",
+     "activities",
+     "feedback",
+     "examples",
+     "questions",
+     "support",
+     "participation"
+    ]
+   },
+   {
+    "q": "Describe your research interests and how they link to teaching.",
+    "keywords": [
+     "research",
+     "publication",
+     "students",
+     "methodology",
+     "topic",
+     "project",
+     "impact"
+    ]
+   },
+   {
+    "q": "How would you assess students fairly?",
+    "keywords": [
+     "rubric",
+     "assignments",
+     "exams",
+     "criteria",
+     "feedback",
+     "variety",
+     "transparent"
+    ]
+   },
+   {
+    "q": "How do you keep up with developments in your field?",
+    "keywords": [
+     "journals",
+     "conferences",
+     "papers",
+     "networking",
+     "courses",
+     "reading",
+     "collaboration"
+    ]
+   }
+  ],
+  "Research Scientist": [
+   {
+    "q": "How do you design an experiment to test a hypothesis?",
+    "keywords": [
+     "hypothesis",
+     "variable",
+     "control",
+     "sample",
+     "repeat",
+     "statistical",
+     "bias"
+    ]
+   },
+   {
+    "q": "What is a p-value and what are its limitations?",
+    "keywords": [
+     "probability",
+     "null hypothesis",
+     "significance",
+     "threshold",
+     "effect size",
+     "misinterpret",
+     "sample size"
+    ]
+   },
+   {
+    "q": "Describe a research problem you worked on and what went wrong.",
+    "keywords": [
+     "problem",
+     "method",
+     "result",
+     "limitation",
+     "learned",
+     "iterate",
+     "data"
+    ]
+   },
+   {
+    "q": "How do you make your research reproducible?",
+    "keywords": [
+     "code",
+     "data",
+     "documentation",
+     "version control",
+     "protocol",
+     "seed",
+     "open"
+    ]
+   },
+   {
+    "q": "How do you decide which papers to read and how do you review literature?",
+    "keywords": [
+     "search",
+     "abstract",
+     "citations",
+     "summarize",
+     "relevance",
+     "gap",
+     "notes"
+    ]
+   }
+  ]
+ },
+ "hr": [
+  {
+   "q": "Tell me about yourself.",
+   "keywords": [
+    "background",
+    "skills",
+    "education",
+    "experience",
+    "goal",
+    "interest",
+    "projects"
+   ]
+  },
+  {
+   "q": "Why do you want to work in this field?",
+   "keywords": [
+    "interest",
+    "passion",
+    "skills",
+    "growth",
+    "learn",
+    "impact",
+    "goal"
+   ]
+  },
+  {
+   "q": "Describe a time you worked in a team and faced a disagreement.",
+   "keywords": [
+    "situation",
+    "task",
+    "action",
+    "result",
+    "team",
+    "listen",
+    "resolved"
+   ]
+  },
+  {
+   "q": "What is your greatest strength and your biggest weakness?",
+   "keywords": [
+    "strength",
+    "example",
+    "weakness",
+    "improve",
+    "working on",
+    "self-aware",
+    "learn"
+   ]
+  },
+  {
+   "q": "Tell me about a time you failed and what you learned.",
+   "keywords": [
+    "situation",
+    "mistake",
+    "action",
+    "learned",
+    "result",
+    "improve",
+    "responsibility"
+   ]
+  },
+  {
+   "q": "Where do you see yourself in five years?",
+   "keywords": [
+    "growth",
+    "skills",
+    "goal",
+    "role",
+    "learn",
+    "contribute",
+    "career"
+   ]
+  },
+  {
+   "q": "Describe a challenging project you completed.",
+   "keywords": [
+    "challenge",
+    "action",
+    "result",
+    "tools",
+    "learned",
+    "team",
+    "deadline"
+   ]
+  },
+  {
+   "q": "Why should we hire you?",
+   "keywords": [
+    "skills",
+    "value",
+    "fit",
+    "experience",
+    "learn",
+    "contribute",
+    "results"
+   ]
+  }
+ ]
+}

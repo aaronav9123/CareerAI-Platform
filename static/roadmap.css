@@ -1,0 +1,177 @@
+/* =====================================================================
+   CAREERAI — roadmap.css (Career Roadmap page)
+===================================================================== */
+
+@import url('tokens.css');
+
+*{ box-sizing:border-box; }
+
+body{
+    margin:0;
+    font-family:var(--font-body);
+    background:var(--ink);
+    color:var(--text);
+    line-height:1.6;
+}
+
+.container{ display:flex; }
+
+.sidebar{
+    width:264px;
+    background:var(--ink-raised);
+    border-right:1px solid var(--line);
+    min-height:100vh;
+    padding:28px 20px;
+    position:fixed;
+}
+
+.logo{ margin-bottom:32px; padding:0 6px; }
+.logo h2{ font-family:var(--font-display); color:var(--text); margin:0; font-size:19px; }
+.logo p{ color:var(--text-faint); margin:2px 0 0; font-size:12px; }
+
+.sidebar a{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color:var(--text-muted);
+    text-decoration:none;
+    padding:12px 14px;
+    margin:4px 0;
+    border-radius:10px;
+    font-size:14.5px;
+    font-weight:500;
+    transition:.2s;
+}
+
+.sidebar a:hover,
+.sidebar .active{
+    background:var(--ink-hover);
+    color:var(--beacon);
+}
+
+.main{
+    margin-left:264px;
+    padding:48px;
+    width:100%;
+}
+
+.main h1{
+    font-family:var(--font-display);
+    font-size:32px;
+}
+
+.main > p{
+    color:var(--text-muted);
+    margin:10px 0 34px;
+}
+
+.main > p a{
+    color:var(--route);
+    font-weight:600;
+}
+
+.eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    font-family:var(--font-mono);
+    font-size:12px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--route);
+    background:rgba(79,209,197,.08);
+    border:1px solid rgba(79,209,197,.25);
+    padding:6px 14px;
+    border-radius:999px;
+    margin-bottom:16px;
+}
+
+.eyebrow::before{
+    content:"";
+    width:6px; height:6px;
+    border-radius:50%;
+    background:var(--route);
+    box-shadow:0 0 0 4px rgba(79,209,197,.18);
+}
+
+.predict-cta{
+    display:inline-flex;
+    margin-top:30px;
+    padding:14px 28px;
+    background:var(--beacon);
+    color:var(--beacon-ink);
+    border-radius:999px;
+    font-weight:700;
+    text-decoration:none;
+    transition:transform .2s ease, box-shadow .2s ease;
+}
+
+.predict-cta:hover{
+    transform:translateY(-2px);
+    box-shadow:0 12px 26px rgba(242,169,59,.3);
+}
+
+/* Roadmap — reuses the route/waypoint signature */
+
+.roadmap{
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    gap:0;
+    max-width:640px;
+}
+
+.step{
+    position:relative;
+    background:var(--ink-raised);
+    border:1px solid var(--line);
+    border-radius:var(--radius-md);
+    padding:26px 28px;
+    margin-bottom:22px;
+    margin-left:36px;
+}
+
+.step::before{
+    content:"";
+    position:absolute;
+    left:-36px;
+    top:30px;
+    width:16px; height:16px;
+    border-radius:50%;
+    background:var(--ink-raised);
+    border:2px solid var(--route);
+}
+
+.step:not(:last-child)::after{
+    content:"";
+    position:absolute;
+    left:-29px;
+    top:52px;
+    bottom:-44px;
+    border-left:2px dashed rgba(79,209,197,.35);
+}
+
+.step:last-child::before{
+    background:var(--beacon);
+    border-color:var(--beacon);
+}
+
+.step h2{
+    font-family:var(--font-display);
+    font-size:19px;
+    color:var(--beacon);
+    margin:0 0 12px;
+}
+
+.step ul{
+    padding-left:20px;
+    line-height:2;
+    color:var(--text-muted);
+    margin:0;
+}
+
+@media(max-width:900px){
+    .container{ flex-direction:column; }
+    .sidebar{ position:relative; width:100%; }
+    .main{ margin-left:0; padding:28px; }
+}

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ATS Resume Score | CareerAI</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='features.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='scroll-effects.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='extras.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="sidebar">
+
+        <div class="logo">
+            <h2>🧭 CareerAI</h2>
+            <p>Find Your Future</p>
+        </div>
+
+        {% set active='ats' %}{% include '_nav.html' %}
+
+    </div>
+
+    <div class="main">
+
+        <span class="eyebrow">ATS Compatibility</span>
+        <h1>Resume Score for {{ result.career }}</h1>
+        <p class="lede">How well your uploaded resume matches what recruiters and applicant tracking systems look for in this role.</p>
+
+        <div class="score-card" data-reveal="up">
+
+            <div class="score-ring" style="--pct: {{ result.score }};">
+                <span class="score-number">{{ result.score }}</span>
+            </div>
+
+            <p class="score-sub">out of 100</p>
+
+            <div class="score-breakdown">
+                <div><strong>{{ result.keyword_points }}/60</strong>Keyword Match</div>
+                <div><strong>{{ result.section_points }}/25</strong>Section Coverage</div>
+                <div><strong>{{ result.format_points }}/15</strong>Format &amp; Length</div>
+            </div>
+
+        </div>
+
+        <div class="two-col" data-reveal-group>
+
+            <div class="info-card strengths" data-reveal="up">
+                <h2>✓ Strengths</h2>
+                {% if result.strengths %}
+                <ul>
+                    {% for s in result.strengths %}
+                    <li>{{ s }}</li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <p>No standout strengths detected yet — the suggestions below will help.</p>
+                {% endif %}
+            </div>
+
+            <div class="info-card weaknesses" data-reveal="up">
+                <h2>✗ Weaknesses</h2>
+                {% if result.weaknesses %}
+                <ul>
+                    {% for w in result.weaknesses %}
+                    <li>{{ w }}</li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <p>No major weaknesses found — nice work!</p>
+                {% endif %}
+            </div>
+
+        </div>
+
+        {% if result.missing_keywords %}
+        <div class="info-card" data-reveal="up" style="margin-bottom:26px;">
+            <h2>Missing Keywords</h2>
+            {% for kw in result.missing_keywords %}
+            <span class="chip">{{ kw }}</span>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <div class="suggestions-card" data-reveal="up">
+            <h2>💡 How to Improve This Resume</h2>
+            <ul>
+                {% for tip in result.suggestions %}
+                <li>{{ tip }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <a href="/projects" class="cta-link">🛠 See Recommended Projects →</a>
+
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='scroll.js') }}" defer></script>
+
+</body>
+</html>

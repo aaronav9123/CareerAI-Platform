@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Market Trends | CareerAI</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='features.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='extras.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='scroll-effects.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="sidebar">
+
+        <div class="logo">
+            <h2>🧭 CareerAI</h2>
+            <p>Find Your Future</p>
+        </div>
+
+        {% set active='trends' %}{% include '_nav.html' %}
+
+    </div>
+
+    <div class="main">
+
+
+        <span class="eyebrow">Career insights</span>
+        <h1>Market Trends · {{ career }}</h1>
+        <p class="lede">Demand, growth and salary outlook for each career the model can recommend.</p>
+
+        {% include '_flash.html' %}
+
+        <form method="GET" action="/market-trends" class="search-bar">
+            <select name="career" onchange="this.form.submit()">
+                {% for c in careers %}<option value="{{ c }}" {% if c == career %}selected{% endif %}>{{ c }}</option>{% endfor %}
+            </select>
+            <noscript><button type="submit" class="cta-link small">Show</button></noscript>
+        </form>
+
+
+
+        <div class="stat-row">
+            <div class="stat-tile"><div class="stat-label">Demand index</div><div class="stat-value">{{ trend.demand_index }}<small>/100</small></div>
+                <div class="bar-track"><div class="bar-fill" style="width:{{ trend.demand_index }}%"></div></div></div>
+            <div class="stat-tile"><div class="stat-label">Annual growth</div>
+                <div class="stat-value {{ 'neg' if trend.yoy_growth_pct < 0 else 'pos' }}">{{ '+' if trend.yoy_growth_pct > 0 }}{{ trend.yoy_growth_pct }}%</div>
+                <div class="stat-sub">{{ 'growing' if trend.yoy_growth_pct > 8 else ('steady' if trend.yoy_growth_pct >= 0 else 'declining') }}</div></div>
+            <div class="stat-tile"><div class="stat-label">Mid-level salary</div><div class="stat-value">₹{{ trend.salary_lpa.mid }}<small> LPA</small></div>
+                {% if live_count %}<div class="stat-sub">{{ "{:,}".format(live_count) }} live openings now</div>{% endif %}</div>
+        </div>
+
+        <div class="info-card" style="margin-bottom:20px;">
+            <h2>Demand over time</h2>
+            <svg viewBox="0 0 {{ chart.w }} {{ chart.h }}" class="line-chart" role="img" aria-label="Demand index by year">
+                {% for y in range(5) %}{% set yy = chart.pad + y * ((chart.h - 2 * chart.pad) / 4) %}
+                <line x1="{{ chart.pad }}" x2="{{ chart.w - chart.pad }}" y1="{{ yy }}" y2="{{ yy }}" stroke="var(--line)"/>{% endfor %}
+                <polyline points="{{ chart.poly }}" fill="none" stroke="var(--beacon)" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+                {% for x, y, v in chart.pts %}
+                <circle cx="{{ x }}" cy="{{ y }}" r="4.5" fill="var(--beacon)"/>
+                <text x="{{ x }}" y="{{ y - 10 }}" text-anchor="middle" class="chart-val">{{ v }}</text>
+                <text x="{{ x }}" y="{{ chart.h - 10 }}" text-anchor="middle" class="chart-lab">{{ years[loop.index0] }}</text>
+                {% endfor %}
+            </svg>
+            <p class="fine-print">Index: 100 = {{ years[0] }} hiring level for this role family.</p>
+        </div>
+
+        <div class="two-col">
+            <div class="info-card">
+                <h2>Salary by experience (LPA)</h2>
+                {% for label, val in [('Entry', trend.salary_lpa.entry), ('Mid', trend.salary_lpa.mid), ('Senior', trend.salary_lpa.senior)] %}
+                <div class="hbar"><span class="hbar-label">{{ label }}</span>
+                    <div class="bar-track"><div class="bar-fill" style="width:{{ (val / max_sal * 100)|round|int }}%"></div></div>
+                    <span class="hbar-val">₹{{ val }}</span></div>
+                {% endfor %}
+            </div>
+            <div class="info-card">
+                <h2>Skills employers ask for</h2>
+                {% for s in trend.top_skills %}<span class="skill-tag">{{ s }}</span>{% endfor %}
+                <p class="muted" style="margin-top:14px;">{{ trend.outlook }}</p>
+            </div>
+        </div>
+
+        <div class="info-card">
+            <h2>How {{ career }} compares</h2>
+            <table class="data-table">
+                <tr><th>Career</th><th>Demand</th><th>Growth</th><th>Mid salary</th></tr>
+                {% for r in compare %}
+                <tr class="{{ 'hl' if r.highlight }}"><td><a href="/market-trends?career={{ r.career|urlencode }}">{{ r.career }}</a></td>
+                    <td><div class="bar-track slim"><div class="bar-fill" style="width:{{ r.demand_index }}%"></div></div></td>
+                    <td class="{{ 'neg' if r.growth < 0 else 'pos' }}">{{ '+' if r.growth > 0 }}{{ r.growth }}%</td><td>₹{{ r.mid }} LPA</td></tr>
+                {% endfor %}
+            </table>
+        </div>
+
+
+    </div>
+
+</div>
+
+
+<script src="{{ url_for('static', filename='scroll.js') }}" defer></script>
+
+</body>
+</html>

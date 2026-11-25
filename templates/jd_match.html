@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Job Description Match | CareerAI</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='features.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='extras.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='scroll-effects.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="sidebar">
+
+        <div class="logo">
+            <h2>🧭 CareerAI</h2>
+            <p>Find Your Future</p>
+        </div>
+
+        {% set active='jd' %}{% include '_nav.html' %}
+
+    </div>
+
+    <div class="main">
+
+
+        <span class="eyebrow">Tailor your resume</span>
+        <h1>Job Description Match</h1>
+        <p class="lede">Paste a job description. We pull the required and preferred keywords out of <em>that job</em>
+            and check how well your uploaded resume covers them.</p>
+
+        {% include '_flash.html' %}
+        {% if error %}<div class="notice-card warn">{{ error }}</div>{% endif %}
+
+        <form method="POST" class="panel-form">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <label for="jd">Job description</label>
+            <textarea id="jd" name="jd" rows="10" maxlength="8000" required
+                placeholder="Paste the full job posting here, including the Requirements / Qualifications section…">{{ jd }}</textarea>
+            <button type="submit" class="cta-link">🔍 Compare with my resume</button>
+        </form>
+
+        {% if result %}
+        <div class="score-card">
+            <div class="score-ring" style="--pct: {{ result.score }};"><span class="score-number">{{ result.score }}</span></div>
+            <div class="score-sub">Match score{% if result.job_title %} for “{{ result.job_title }}”{% endif %}</div>
+            <div class="score-breakdown">
+                <div><strong>{{ result.matched_required|length }}/{{ result.required|length }}</strong>required skills</div>
+                <div><strong>{{ result.matched_preferred|length }}/{{ result.preferred|length }}</strong>preferred skills</div>
+                <div><strong>{{ result.matched_terms|length }}/{{ result.matched_terms|length + result.missing_terms|length }}</strong>JD keywords</div>
+            </div>
+        </div>
+
+        <div class="two-col">
+            <div class="info-card strengths">
+                <h2>✓ Found in your resume</h2>
+                {% for s in result.matched_required %}<span class="skill-tag">{{ s }}{% if result.via_alias.get(s) %} <em class="via">via “{{ result.via_alias[s] }}”</em>{% endif %}</span>{% endfor %}
+                {% for s in result.matched_preferred %}<span class="skill-tag soft">{{ s }} (preferred)</span>{% endfor %}
+                {% if not result.matched_required and not result.matched_preferred %}<p class="muted">No required skills matched yet.</p>{% endif %}
+            </div>
+            <div class="info-card weaknesses">
+                <h2>✗ Missing</h2>
+                {% for s in result.missing_required %}<span class="chip">{{ s }}</span>{% endfor %}
+                {% for s in result.missing_preferred %}<span class="chip soft">{{ s }} (preferred)</span>{% endfor %}
+                {% for s in result.missing_terms %}<span class="chip term">{{ s }}</span>{% endfor %}
+                {% if not (result.missing_required or result.missing_preferred or result.missing_terms) %}<p class="muted">Nothing missing - nice.</p>{% endif %}
+            </div>
+        </div>
+
+        {% if result.weaknesses %}
+        <div class="info-card" style="margin-bottom:20px;"><h2>Gaps</h2><ul>{% for w in result.weaknesses %}<li>{{ w }}</li>{% endfor %}</ul></div>
+        {% endif %}
+
+        <div class="suggestions-card">
+            <h2>💡 How to improve your match</h2>
+            <ul>{% for s in result.suggestions %}<li>{{ s }}</li>{% endfor %}</ul>
+            <p class="fine-print">Matcher: {{ result.matcher }}. Only add skills you genuinely have.</p>
+        </div>
+        {% endif %}
+
+
+    </div>
+
+</div>
+
+
+<script src="{{ url_for('static', filename='scroll.js') }}" defer></script>
+
+</body>
+</html>

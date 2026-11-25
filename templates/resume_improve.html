@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resume Improver | CareerAI</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='features.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='extras.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='scroll-effects.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="sidebar">
+
+        <div class="logo">
+            <h2>🧭 CareerAI</h2>
+            <p>Find Your Future</p>
+        </div>
+
+        {% set active='improve' %}{% include '_nav.html' %}
+
+    </div>
+
+    <div class="main">
+
+
+        <span class="eyebrow">{% if ai_available %}AI-powered · {{ ai_label }}{% else %}Rule-based mode{% endif %}</span>
+        <h1>Resume Improver</h1>
+        <p class="lede">We find the weakest bullet points in your resume and suggest stronger rewrites{% if career %} for a {{ career }} role{% endif %}.
+            {% if not ai_available %}Add an LLM API key in <code>.env</code> for AI rewrites; until then you get rule-based suggestions.{% endif %}</p>
+
+        {% include '_flash.html' %}
+
+        <form method="POST" class="panel-form inline">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <button type="submit" class="cta-link">✨ {% if result %}Analyse again{% else %}Analyse my resume{% endif %}</button>
+        </form>
+
+        {% if result %}
+        <div class="notice-card">
+            Found <strong>{{ result.bullets_found }}</strong> bullet points; {{ result.rewrites|length }} need work.
+            Mode: <strong>{{ 'AI (' ~ result.llm_label ~ ')' if result.mode == 'ai' else 'rule-based' }}</strong>.
+        </div>
+
+        {% if result.overall %}
+        <div class="suggestions-card"><h2>Overall tips</h2><ul>{% for t in result.overall %}<li>{{ t }}</li>{% endfor %}</ul></div>
+        {% endif %}
+
+        {% for it in result.rewrites %}
+        <div class="diff-card">
+            <div class="diff-before"><span class="diff-tag">Before</span>{{ it.original }}
+                <div class="diff-issues">{% for i in it.issues %}<span class="chip">{{ i }}</span>{% endfor %}</div>
+            </div>
+            <div class="diff-after"><span class="diff-tag good">After</span>{{ it.improved }}
+                {% if it.why %}<div class="diff-why">{{ it.why }}</div>{% endif %}
+            </div>
+        </div>
+        {% else %}
+        <div class="notice-card">Your bullet points already look strong - no weak ones found. 🎉</div>
+        {% endfor %}
+
+        <p class="fine-print">Rewrites with [brackets] need <em>your real numbers</em> - never publish a metric you can't back up.</p>
+
+        <h2 class="section-title">Action verbs to use</h2>
+        <div class="verb-grid">
+            {% for group, verbs in result.verbs.items() %}
+            <div class="info-card"><h2>{{ group }}</h2>{% for v in verbs %}<span class="skill-tag">{{ v }}</span>{% endfor %}</div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+
+    </div>
+
+</div>
+
+
+<script src="{{ url_for('static', filename='scroll.js') }}" defer></script>
+
+</body>
+</html>

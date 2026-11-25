@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Prediction | CareerAI</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='predict.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='scroll-effects.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='extras.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+
+        <div class="logo">
+            <h2>🧭 CareerAI</h2>
+            <p>Find Your Future</p>
+        </div>
+
+        {% set active='predict' %}{% include '_nav.html' %}
+
+    </div>
+
+    <!-- Main -->
+    <div class="main">
+
+        <div class="header">
+            <h1>🎯 Career Prediction</h1>
+            <p>
+                Fill in your academic details, skills and certification.
+                Our AI model will recommend the most suitable career for you.
+            </p>
+        </div>
+
+        {% if resume_data %}
+        <div class="form-error" data-reveal="up" style="background:rgba(79,209,197,.1); border-color:rgba(79,209,197,.35); color:var(--route);">
+            📄 We've pre-filled this form from your uploaded resume. Review and edit anything before predicting.
+        </div>
+        {% endif %}
+
+        {% if error %}
+        <div class="form-error" data-reveal="up">
+            ⚠️ {{ error }}
+        </div>
+        {% endif %}
+
+        <form method="POST">
+<input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+            <div class="card" data-reveal="up">
+
+                {% set edu_prefill = resume_data.education if resume_data else None %}
+                {% set spec_prefill = resume_data.specialization if resume_data else None %}
+                {% set cert_prefill = resume_data.certification if resume_data else None %}
+                {% set cgpa_prefill = resume_data.cgpa if resume_data else None %}
+                {% set skills_prefill = (resume_data.skills if resume_data else None) or selected_skills %}
+
+                <h2>Education Level</h2>
+
+                <select name="education" required>
+                    <option value="">Select Education Level</option>
+                    <option {% if edu_prefill=="Bachelor's" %}selected{% endif %}>Bachelor's</option>
+                    <option {% if edu_prefill=="Master's" %}selected{% endif %}>Master's</option>
+                    <option {% if edu_prefill=="Intermediate" %}selected{% endif %}>Intermediate</option>
+                    <option {% if edu_prefill=="Matric" %}selected{% endif %}>Matric</option>
+                    <option {% if edu_prefill=="PhD" %}selected{% endif %}>PhD</option>
+                </select>
+
+                <h2>Specialization</h2>
+
+                <select name="specialization" required>
+                    <option value="">Select Specialization</option>
+                    <option {% if spec_prefill=="Computer Science" %}selected{% endif %}>Computer Science</option>
+                    <option {% if spec_prefill=="Science" %}selected{% endif %}>Science</option>
+                    <option {% if spec_prefill=="Business" %}selected{% endif %}>Business</option>
+                    <option {% if spec_prefill=="Commerce" %}selected{% endif %}>Commerce</option>
+                    <option {% if spec_prefill=="Arts" %}selected{% endif %}>Arts</option>
+                </select>
+
+                <h2>Select Your Skills</h2>
+                <p class="hint">Pick everything that applies — the model weighs your strongest skill first.</p>
+
+<div class="skills">
+
+{% for skill in ["Python","Java","C","C++","SQL","HTML","CSS","JavaScript","React","Node.js","Machine Learning","Deep Learning","Artificial Intelligence","Data Analysis","Cloud Computing","Cyber Security","Docker","Git","Linux","Communication","Leadership","Problem Solving","Teamwork","MS Office","Excel","Accounting","Financial Analysis","Marketing","Graphic Design"] %}
+<label><input type="checkbox" name="skills" value="{{ skill }}" {% if skill in skills_prefill %}checked{% endif %}> {{ skill }}</label>
+{% endfor %}
+
+</div>
+                <h2>Certification</h2>
+
+                <select name="certification" required>
+                    <option value="">Select Certification</option>
+                    <option {% if cert_prefill=="AWS Certified" %}selected{% endif %}>AWS Certified</option>
+                    <option {% if cert_prefill=="Google Data Analytics" %}selected{% endif %}>Google Data Analytics</option>
+                    <option {% if cert_prefill=="Tally ERP" %}selected{% endif %}>Tally ERP</option>
+                    <option {% if cert_prefill=="CFA Level 1" %}selected{% endif %}>CFA Level 1</option>
+                    <option {% if cert_prefill=="Mental Health Basics" %}selected{% endif %}>Mental Health Basics</option>
+                    <option {% if (not cert_prefill) or cert_prefill=="None" %}selected{% endif %}>None</option>
+                </select>
+
+                <h2>CGPA / Percentage</h2>
+
+                <input
+                    type="number"
+                    name="cgpa"
+                    min="0"
+                    max="100"
+                    step="0.1"
+                    placeholder="Enter CGPA / Percentage"
+                    value="{{ cgpa_prefill if cgpa_prefill is not none else '' }}"
+                    required>
+
+                <button class="predict-btn" type="submit">
+                    🎯 Predict Career
+                </button>
+
+            </div>
+
+        </form>
+
+        {% if prediction %}
+
+        <div class="result" data-reveal="zoom">
+
+            <h2>🎉 Recommended Career</h2>
+
+            <h1>{{ prediction }}</h1>
+
+            <p>Your career has been successfully predicted using AI.</p>
+
+            {% if confidence is not none %}
+            <p class="confidence-line">Model confidence: <strong>{{ confidence }}%</strong> &middot; saved to your
+                <a href="/dashboard#history">prediction history</a></p>
+            {% endif %}
+
+            <hr>
+
+            <h3>Recommended Next Steps</h3>
+
+            <ul>
+                <li>📚 Learn the required technical skills.</li>
+                <li>💻 Build practical projects.</li>
+                <li>🏆 Complete industry certifications.</li>
+                <li>📄 Create an impressive resume & portfolio.</li>
+                <li>🎤 Practice aptitude and interview questions.</li>
+            </ul>
+
+            <a href="/roadmap" class="roadmap-btn">
+                🗺 View Career Roadmap
+            </a>
+
+            <a href="/skill-gap" class="roadmap-btn" style="background:var(--beacon); color:var(--beacon-ink); margin-left:12px;">
+                📊 View Skill Gap Analysis
+            </a>
+
+            <div style="margin-top:12px;">
+
+                {% if resume_data or resume_uploaded %}
+                <a href="/ats-score" class="roadmap-btn" style="background:transparent; border:1px solid var(--line-strong); color:var(--text);">
+                    🧾 ATS Resume Score
+                </a>
+                {% endif %}
+
+                <a href="/projects" class="roadmap-btn" style="background:transparent; border:1px solid var(--line-strong); color:var(--text); margin-left:12px;">
+                    🛠 Project Recommendations
+                </a>
+
+                <a href="/jobs" class="roadmap-btn" style="background:transparent; border:1px solid var(--line-strong); color:var(--text); margin-left:12px;">
+                    💼 Job Matching
+                </a>
+
+                <a href="/interview" class="roadmap-btn" style="background:transparent; border:1px solid var(--line-strong); color:var(--text); margin-left:12px; margin-top:12px;">
+                    🎤 Mock Interview
+                </a>
+
+                <a href="/market-trends" class="roadmap-btn" style="background:transparent; border:1px solid var(--line-strong); color:var(--text); margin-left:12px; margin-top:12px;">
+                    📈 Market Trends
+                </a>
+
+            </div>
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='scroll.js') }}" defer></script>
+
+</body>
+</html>

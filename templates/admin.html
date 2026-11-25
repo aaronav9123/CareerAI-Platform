@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Panel | CareerAI</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='features.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='extras.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='scroll-effects.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="sidebar">
+
+        <div class="logo">
+            <h2>🧭 CareerAI</h2>
+            <p>Find Your Future</p>
+        </div>
+
+        {% set active='admin' %}{% include '_nav.html' %}
+
+    </div>
+
+    <div class="main">
+
+
+        <span class="eyebrow">Administrator</span>
+        <h1>Admin Panel</h1>
+        <p class="lede">Platform usage at a glance and user management.</p>
+
+        {% include '_flash.html' %}
+
+        <div class="stat-row four">
+            <div class="stat-tile"><div class="stat-label">Users</div><div class="stat-value">{{ stats.users }}</div><div class="stat-sub">{{ stats.new_week }} new this week</div></div>
+            <div class="stat-tile"><div class="stat-label">Verified</div><div class="stat-value">{{ stats.verified }}</div><div class="stat-sub">{{ stats.unverified }} unverified</div></div>
+            <div class="stat-tile"><div class="stat-label">Predictions</div><div class="stat-value">{{ stats.predictions }}</div><div class="stat-sub">avg confidence {{ stats.avg_conf if stats.avg_conf is not none else '–' }}%</div></div>
+            <div class="stat-tile"><div class="stat-label">Avg readiness</div><div class="stat-value">{{ stats.avg_ready if stats.avg_ready is not none else '–' }}{% if stats.avg_ready is not none %}%{% endif %}</div><div class="stat-sub">{{ stats.resumes }} resumes uploaded</div></div>
+        </div>
+
+        <div class="two-col">
+            <div class="info-card">
+                <h2>Most predicted careers</h2>
+                {% set top = top_careers[0].c if top_careers else 1 %}
+                {% for c in top_careers %}
+                <div class="hbar"><span class="hbar-label wide">{{ c.career }}</span>
+                    <div class="bar-track"><div class="bar-fill" style="width:{{ (c.c / top * 100)|round|int }}%"></div></div>
+                    <span class="hbar-val">{{ c.c }}</span></div>
+                {% else %}<p class="muted">No predictions yet.</p>{% endfor %}
+            </div>
+            <div class="info-card">
+                <h2>Most selected skills</h2>
+                {% for skill, n in top_skills %}<span class="skill-tag">{{ skill }} · {{ n }}</span>{% else %}<p class="muted">No data yet.</p>{% endfor %}
+                <h2 style="margin-top:22px;">Mock interviews</h2>
+                <p class="muted">{{ stats.interviews }} completed{% if stats.interview_avg is not none %} · average score {{ stats.interview_avg }}/10{% endif %}</p>
+            </div>
+        </div>
+
+        <div class="info-card" style="margin-bottom:20px;">
+            <h2>New sign-ups, last 14 days</h2>
+            {% set peak = (signups|map(attribute='n')|max) or 1 %}
+            <div class="col-chart">
+                {% for s in signups %}
+                <div class="col"><span class="col-n">{{ s.n if s.n else '' }}</span><div class="col-bar" style="height:{{ (s.n / peak * 100)|round|int }}%"></div><span class="col-l">{{ s.day }}</span></div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="info-card" style="margin-bottom:20px;">
+            <h2>Recent predictions</h2>
+            <table class="data-table">
+                <tr><th>User</th><th>Career</th><th>Confidence</th><th>Readiness</th><th>When (UTC)</th></tr>
+                {% for r in recent %}<tr><td>{{ r.name }}</td><td>{{ r.career }}</td><td>{{ r.confidence if r.confidence is not none else '–' }}%</td><td>{{ r.readiness if r.readiness is not none else '–' }}%</td><td>{{ r.created_at[:16] }}</td></tr>
+                {% else %}<tr><td colspan="5" class="muted">Nothing yet.</td></tr>{% endfor %}
+            </table>
+        </div>
+
+        <div class="info-card">
+            <h2>Users</h2>
+            <form method="GET" action="/admin" class="search-bar"><input type="text" name="q" value="{{ q }}" placeholder="Search name or email" maxlength="80"><button class="cta-link small" type="submit">Search</button></form>
+            <div class="table-scroll">
+            <table class="data-table">
+                <tr><th>Name</th><th>Email</th><th>Status</th><th>Predictions</th><th>Latest career</th><th>Joined</th><th></th></tr>
+                {% for u in users %}
+                <tr>
+                    <td>{{ u.name }}</td><td>{{ u.email }}</td>
+                    <td>{% if u.is_verified %}<span class="badge ok">verified</span>{% else %}<span class="badge warn">unverified</span>{% endif %}</td>
+                    <td>{{ u.preds }}</td><td>{{ u.last_career or '–' }}</td><td>{{ (u.created_at or '')[:10] }}</td>
+                    <td class="actions">
+                        {% if not u.is_verified %}
+                        <form method="POST" action="/admin/users/{{ u.id }}/verify"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><button class="mini-btn">verify</button></form>
+                        {% endif %}
+                        <form method="POST" action="/admin/users/{{ u.id }}/delete" onsubmit="return confirm('Delete {{ u.email|e }} and all their data? This cannot be undone.');"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><button class="mini-btn danger">delete</button></form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+
+
+<script src="{{ url_for('static', filename='scroll.js') }}" defer></script>
+
+</body>
+</html>

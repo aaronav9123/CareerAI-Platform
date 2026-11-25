@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Profile | CareerAI</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='profile.css') }}">
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='scroll-effects.css') }}">
+
+<link rel="stylesheet" href="{{ url_for('static', filename='extras.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="sidebar">
+
+<div class="logo">
+<h2>🧭 CareerAI</h2>
+<p>Find Your Future</p>
+</div>
+
+{% set active='profile' %}{% include '_nav.html' %}
+
+</div>
+
+<div class="main">
+
+<h1>My Profile</h1>
+
+<div class="profile-card" data-reveal="zoom">
+
+<div class="avatar">
+👤
+</div>
+
+<h2>{{ user_name }}</h2>
+
+<p>{{ email }}</p>
+
+<hr>
+
+<div class="info">
+
+<div>
+<strong>Recommended Career</strong>
+<p class="{% if not last_prediction %}muted{% endif %}">{{ last_prediction or "Not yet" }}</p>
+</div>
+
+<div>
+<strong>Status</strong>
+<p>Active</p>
+</div>
+
+</div>
+
+<a href="/predict" class="btn-link">
+    {% if last_prediction %}Update Prediction{% else %}Run Career Prediction{% endif %}
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<script src="{{ url_for('static', filename='scroll.js') }}" defer></script>
+
+</body>
+</html>

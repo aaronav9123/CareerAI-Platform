@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Skill Gap Analysis | CareerAI</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='skillgap.css') }}">
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='scroll-effects.css') }}">
+
+<link rel="stylesheet" href="{{ url_for('static', filename='extras.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="sidebar">
+
+        <div class="logo">
+            <h2>🧭 CareerAI</h2>
+            <p>Find Your Future</p>
+        </div>
+
+        {% set active='skillgap' %}{% include '_nav.html' %}
+
+    </div>
+
+    <div class="main">
+
+        <span class="eyebrow">Personalised for you</span>
+        <h1>Skill Gap Analysis for {{ gap.career }}</h1>
+        <p>Comparing the skills you selected against what this role typically needs. Learned a missing skill? Mark it and your readiness updates. Matching is semantic, so "ML" counts as "Machine Learning".</p>
+
+        {% include '_flash.html' %}
+
+        <div class="readiness-card" data-reveal="up">
+            <div class="readiness-label">Overall Readiness</div>
+            <div class="readiness-bar-track">
+                <div class="readiness-bar-fill" style="width: {{ gap.readiness }}%;"></div>
+            </div>
+            <div class="readiness-value">{{ gap.readiness }}%</div>
+            {% if gap.readiness > gap.base_readiness %}
+            <div class="readiness-delta">▲ +{{ gap.readiness - gap.base_readiness }} points from skills you've learned since your prediction (was {{ gap.base_readiness }}%)</div>
+            {% endif %}
+        </div>
+
+        <div class="gap-columns" data-reveal-group>
+
+            <div class="gap-card possessed" data-reveal="up">
+                <h2>✓ Skills You Have</h2>
+                {% if gap.possessed %}
+                <ul>
+                    {% for skill in gap.possessed %}
+                    <li>{{ skill }}
+                        {% if skill in gap.learned_here %}
+                            <span class="tag-learned">learned</span>
+                            {% if skill in manual_learned %}
+                            <form method="POST" action="/skill-gap/learn" class="mini-form">
+                                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                <input type="hidden" name="skill" value="{{ skill }}">
+                                <input type="hidden" name="action" value="unlearn">
+                                <button type="submit" class="mini-btn ghost">undo</button>
+                            </form>
+                            {% else %}<span class="tag-note">via roadmap</span>{% endif %}
+                        {% endif %}
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <p class="empty-note">None of the required skills yet — that's okay, use the suggestions below to get started.</p>
+                {% endif %}
+            </div>
+
+            <div class="gap-card missing" data-reveal="up">
+                <h2>✗ Skills to Build</h2>
+                {% if gap.missing %}
+                <ul>
+                    {% for skill in gap.missing %}
+                    <li>{{ skill }}{% if skill in gap.missing_core %} <span class="tag-core">core</span>{% endif %}
+                        <form method="POST" action="/skill-gap/learn" class="mini-form">
+                            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                            <input type="hidden" name="skill" value="{{ skill }}">
+                            <input type="hidden" name="action" value="learn">
+                            <button type="submit" class="mini-btn">✓ I've learned this</button>
+                        </form>
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <p class="empty-note">You already cover everything this role typically needs!</p>
+                {% endif %}
+            </div>
+
+        </div>
+
+        <div class="suggestions-card" data-reveal="up">
+            <h2>💡 What to Learn Next</h2>
+            <ul>
+                {% for tip in gap.suggestions %}
+                <li>{{ tip }}</li>
+                {% endfor %}
+            </ul>
+
+            {% if gap.certifications_recommended %}
+            <p class="cert-note">
+                Recommended certifications: {{ gap.certifications_recommended | join(", ") }}
+            </p>
+            {% endif %}
+        </div>
+
+        <a href="/roadmap" class="predict-cta">🗺 View Full Career Roadmap →</a>
+
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='scroll.js') }}" defer></script>
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+[
+  {"title": "Junior Software Engineer", "career": "Software Engineer", "required_skills": ["Python", "Git", "SQL", "Problem Solving"], "salary_range": "₹4 LPA - ₹7 LPA", "experience_level": "Entry Level"},
+  {"title": "Full-Stack Developer", "career": "Software Engineer", "required_skills": ["JavaScript", "React", "Node.js", "SQL"], "salary_range": "₹6 LPA - ₹12 LPA", "experience_level": "Mid Level"},
+  {"title": "Backend Engineer", "career": "Software Engineer", "required_skills": ["Java", "SQL", "Docker", "Linux"], "salary_range": "₹6 LPA - ₹14 LPA", "experience_level": "Mid Level"},
+
+  {"title": "Machine Learning Engineer I", "career": "ML Engineer", "required_skills": ["Python", "Machine Learning", "Data Analysis"], "salary_range": "₹6 LPA - ₹12 LPA", "experience_level": "Entry Level"},
+  {"title": "Deep Learning Engineer", "career": "ML Engineer", "required_skills": ["Deep Learning", "Python", "Artificial Intelligence"], "salary_range": "₹10 LPA - ₹20 LPA", "experience_level": "Mid Level"},
+  {"title": "MLOps Engineer", "career": "ML Engineer", "required_skills": ["Machine Learning", "Docker", "Cloud Computing"], "salary_range": "₹12 LPA - ₹22 LPA", "experience_level": "Senior Level"},
+
+  {"title": "Data Entry Operator", "career": "Data Entry Operator", "required_skills": ["MS Office", "Excel"], "salary_range": "₹1.5 LPA - ₹2.5 LPA", "experience_level": "Entry Level"},
+  {"title": "Back Office Executive", "career": "Data Entry Operator", "required_skills": ["MS Office", "Communication"], "salary_range": "₹2 LPA - ₹3 LPA", "experience_level": "Entry Level"},
+
+  {"title": "Junior Business Analyst", "career": "Business Analyst", "required_skills": ["Excel", "Data Analysis", "Communication"], "salary_range": "₹4 LPA - ₹7 LPA", "experience_level": "Entry Level"},
+  {"title": "Business Analyst", "career": "Business Analyst", "required_skills": ["SQL", "Data Analysis", "Communication"], "salary_range": "₹6 LPA - ₹11 LPA", "experience_level": "Mid Level"},
+  {"title": "Senior Business Analyst", "career": "Business Analyst", "required_skills": ["Data Analysis", "Leadership", "SQL"], "salary_range": "₹10 LPA - ₹18 LPA", "experience_level": "Senior Level"},
+
+  {"title": "Financial Analyst", "career": "Financial Analyst", "required_skills": ["Financial Analysis", "Excel", "Accounting"], "salary_range": "₹5 LPA - ₹9 LPA", "experience_level": "Entry Level"},
+  {"title": "Senior Financial Analyst", "career": "Financial Analyst", "required_skills": ["Financial Analysis", "Excel", "Data Analysis"], "salary_range": "₹9 LPA - ₹16 LPA", "experience_level": "Mid Level"},
+
+  {"title": "Junior Accountant", "career": "Junior Accountant", "required_skills": ["Accounting", "Excel", "MS Office"], "salary_range": "₹2.5 LPA - ₹4 LPA", "experience_level": "Entry Level"},
+  {"title": "Accounts Executive", "career": "Junior Accountant", "required_skills": ["Accounting", "Excel"], "salary_range": "₹3 LPA - ₹5.5 LPA", "experience_level": "Entry Level"},
+
+  {"title": "Marketing Executive", "career": "Marketing Executive", "required_skills": ["Marketing", "Communication"], "salary_range": "₹3 LPA - ₹6 LPA", "experience_level": "Entry Level"},
+  {"title": "Digital Marketing Associate", "career": "Marketing Executive", "required_skills": ["Marketing", "Data Analysis", "Graphic Design"], "salary_range": "₹4 LPA - ₹8 LPA", "experience_level": "Mid Level"},
+
+  {"title": "Sales Assistant", "career": "Sales Assistant", "required_skills": ["Communication", "Teamwork"], "salary_range": "₹2 LPA - ₹3.5 LPA", "experience_level": "Entry Level"},
+  {"title": "Retail Sales Executive", "career": "Sales Assistant", "required_skills": ["Communication", "Marketing"], "salary_range": "₹2.5 LPA - ₹4.5 LPA", "experience_level": "Entry Level"},
+
+  {"title": "Office Clerk", "career": "Clerk", "required_skills": ["MS Office", "Communication"], "salary_range": "₹1.8 LPA - ₹3 LPA", "experience_level": "Entry Level"},
+  {"title": "Administrative Clerk", "career": "Clerk", "required_skills": ["MS Office", "Excel"], "salary_range": "₹2 LPA - ₹3.5 LPA", "experience_level": "Entry Level"},
+
+  {"title": "School Counselor", "career": "School Counselor", "required_skills": ["Communication", "Leadership"], "salary_range": "₹3 LPA - ₹6 LPA", "experience_level": "Entry Level"},
+  {"title": "Student Wellbeing Counselor", "career": "School Counselor", "required_skills": ["Communication", "Problem Solving"], "salary_range": "₹4 LPA - ₹7 LPA", "experience_level": "Mid Level"},
+
+  {"title": "Assistant Professor", "career": "Professor", "required_skills": ["Communication", "Data Analysis"], "salary_range": "₹6 LPA - ₹12 LPA", "experience_level": "Mid Level"},
+  {"title": "Guest Lecturer", "career": "Professor", "required_skills": ["Communication", "Leadership"], "salary_range": "₹3 LPA - ₹6 LPA", "experience_level": "Entry Level"},
+
+  {"title": "Research Associate", "career": "Research Scientist", "required_skills": ["Data Analysis", "Python"], "salary_range": "₹5 LPA - ₹9 LPA", "experience_level": "Entry Level"},
+  {"title": "Research Scientist", "career": "Research Scientist", "required_skills": ["Data Analysis", "Python", "Machine Learning"], "salary_range": "₹8 LPA - ₹16 LPA", "experience_level": "Mid Level"}
+]

@@ -1,0 +1,206 @@
+{
+  "Software Engineer": {
+    "beginner": [
+      {"title": "Personal Portfolio Website", "description": "A responsive personal site with an about page, projects list and contact form.", "skills_learned": ["HTML", "CSS", "JavaScript"]},
+      {"title": "Command-Line To-Do App", "description": "A CRUD to-do manager that persists tasks to a local file or SQLite database.", "skills_learned": ["Python", "SQL"]},
+      {"title": "Simple REST API", "description": "A small Flask/Express API with 2-3 resources and basic validation.", "skills_learned": ["Python", "SQL", "Problem Solving"]}
+    ],
+    "intermediate": [
+      {"title": "Full-Stack Task Manager", "description": "A React front end backed by a REST API with authentication and a real database.", "skills_learned": ["React", "Node.js", "SQL", "Git"]},
+      {"title": "URL Shortener Service", "description": "A service that shortens URLs, tracks click counts, and handles collisions at scale.", "skills_learned": ["Python", "SQL", "Docker"]},
+      {"title": "Dockerized Microservice", "description": "Split a monolith into two small services that communicate over HTTP, containerised with Docker.", "skills_learned": ["Docker", "Linux", "Node.js"]}
+    ],
+    "advanced": [
+      {"title": "CI/CD Pipeline for a Web App", "description": "Automate build, test and deploy for a full-stack app using GitHub Actions and Docker.", "skills_learned": ["Docker", "Git", "Linux"]},
+      {"title": "Scalable Chat Application", "description": "A real-time chat app using WebSockets, message queues and horizontal scaling.", "skills_learned": ["Node.js", "SQL", "Cloud Computing"]},
+      {"title": "Open-Source Contribution", "description": "Contribute a meaningful feature or fix to an established open-source repository.", "skills_learned": ["Git", "Problem Solving", "Teamwork"]}
+    ]
+  },
+  "ML Engineer": {
+    "beginner": [
+      {"title": "Titanic Survival Predictor", "description": "A classic classification model on the Titanic dataset with basic feature engineering.", "skills_learned": ["Python", "Machine Learning", "Data Analysis"]},
+      {"title": "House Price Regression", "description": "Predict house prices from tabular data using linear regression and regularisation.", "skills_learned": ["Python", "Machine Learning"]},
+      {"title": "Exploratory Data Analysis Notebook", "description": "Clean, visualise and summarise a public dataset with clear insights.", "skills_learned": ["Data Analysis", "Python"]}
+    ],
+    "intermediate": [
+      {"title": "Image Classifier with CNNs", "description": "Train a convolutional neural network to classify images from a custom dataset.", "skills_learned": ["Deep Learning", "Python", "Machine Learning"]},
+      {"title": "End-to-End ML Pipeline", "description": "Wrap a trained model behind an API with input validation and logging.", "skills_learned": ["Python", "Machine Learning", "SQL"]},
+      {"title": "Recommendation System", "description": "Build a collaborative-filtering recommender for a movies or products dataset.", "skills_learned": ["Machine Learning", "Data Analysis"]}
+    ],
+    "advanced": [
+      {"title": "MLOps Pipeline with CI/CD", "description": "Automate retraining, versioning and deployment of a model using Docker and MLflow.", "skills_learned": ["Docker", "Cloud Computing", "Machine Learning"]},
+      {"title": "Kaggle Competition Entry", "description": "Compete in an active Kaggle competition and document your approach end-to-end.", "skills_learned": ["Machine Learning", "Deep Learning", "Data Analysis"]},
+      {"title": "Custom NLP or Vision Model", "description": "Fine-tune a pretrained transformer or vision model on a domain-specific dataset.", "skills_learned": ["Deep Learning", "Artificial Intelligence", "Python"]}
+    ]
+  },
+  "Data Entry Operator": {
+    "beginner": [
+      {"title": "Digitising Paper Records", "description": "Convert a batch of sample paper forms into a clean spreadsheet with validation rules.", "skills_learned": ["MS Office", "Excel"]},
+      {"title": "Typing Speed Tracker", "description": "Practice and log typing speed/accuracy improvements over a few weeks.", "skills_learned": ["MS Office"]},
+      {"title": "Contact List Cleanup", "description": "Standardise and de-duplicate a messy contact list in Excel.", "skills_learned": ["Excel"]}
+    ],
+    "intermediate": [
+      {"title": "Data Validation Macro", "description": "Build simple Excel macros/formulas that flag invalid or duplicate entries automatically.", "skills_learned": ["Excel", "MS Office"]},
+      {"title": "Inventory Tracking Sheet", "description": "Design a multi-sheet inventory tracker with formulas for stock alerts.", "skills_learned": ["Excel"]},
+      {"title": "Mail-Merge Reporting", "description": "Generate personalised letters/reports for a list of records using mail merge.", "skills_learned": ["MS Office"]}
+    ],
+    "advanced": [
+      {"title": "SQL-Backed Data Entry Log", "description": "Move a spreadsheet-based log into a small SQL database with basic reporting queries.", "skills_learned": ["SQL", "Excel"]},
+      {"title": "Data Quality Dashboard", "description": "Build a simple dashboard summarising entry error rates and turnaround time.", "skills_learned": ["Excel", "Data Analysis"]},
+      {"title": "Process Documentation Kit", "description": "Document a repeatable, error-resistant data entry SOP for a small team.", "skills_learned": ["MS Office", "Communication"]}
+    ]
+  },
+  "Business Analyst": {
+    "beginner": [
+      {"title": "Sales Dashboard in Excel", "description": "Summarise a sample sales dataset with pivot tables and charts.", "skills_learned": ["Excel", "Data Analysis"]},
+      {"title": "Requirements Document", "description": "Write a sample business requirements document for a hypothetical feature.", "skills_learned": ["Communication", "Problem Solving"]},
+      {"title": "Simple SQL Reporting", "description": "Write SQL queries to answer common business questions on a sample database.", "skills_learned": ["SQL"]}
+    ],
+    "intermediate": [
+      {"title": "Process Mapping Exercise", "description": "Map an existing (or hypothetical) business process and propose improvements.", "skills_learned": ["Problem Solving", "Communication"]},
+      {"title": "KPI Dashboard (Power BI/Tableau)", "description": "Build an interactive dashboard tracking key business metrics.", "skills_learned": ["Data Analysis", "Excel"]},
+      {"title": "A/B Test Analysis", "description": "Analyse a sample A/B test dataset and present a data-backed recommendation.", "skills_learned": ["Data Analysis", "SQL"]}
+    ],
+    "advanced": [
+      {"title": "End-to-End Case Study", "description": "Take a business problem from requirements gathering through to a proposed data-driven solution.", "skills_learned": ["Communication", "Data Analysis", "Leadership"]},
+      {"title": "Forecasting Model", "description": "Build a simple demand/revenue forecasting model using historical data.", "skills_learned": ["Data Analysis", "SQL"]},
+      {"title": "Stakeholder Presentation Deck", "description": "Turn an analysis into a polished executive-ready presentation.", "skills_learned": ["Communication", "Leadership"]}
+    ]
+  },
+  "Financial Analyst": {
+    "beginner": [
+      {"title": "Personal Budget Tracker", "description": "Build a spreadsheet that tracks income, expenses and savings goals.", "skills_learned": ["Excel", "Accounting"]},
+      {"title": "Basic Ratio Analysis", "description": "Calculate liquidity, profitability and leverage ratios for a public company.", "skills_learned": ["Financial Analysis", "Accounting"]},
+      {"title": "Expense Report Automation", "description": "Automate expense categorisation and totals with Excel formulas.", "skills_learned": ["Excel"]}
+    ],
+    "intermediate": [
+      {"title": "3-Statement Financial Model", "description": "Build a linked income statement, balance sheet and cash flow model for a company.", "skills_learned": ["Financial Analysis", "Excel"]},
+      {"title": "Company Valuation", "description": "Value a public company using DCF and comparable-company analysis.", "skills_learned": ["Financial Analysis", "Accounting"]},
+      {"title": "Budget vs Actual Dashboard", "description": "Build a variance-analysis dashboard comparing budgeted vs actual figures.", "skills_learned": ["Excel", "Data Analysis"]}
+    ],
+    "advanced": [
+      {"title": "Portfolio Risk Analysis", "description": "Analyse risk/return of a sample investment portfolio using historical data.", "skills_learned": ["Financial Analysis", "Data Analysis"]},
+      {"title": "Merger Model", "description": "Build a simplified M&A accretion/dilution model for two public companies.", "skills_learned": ["Financial Analysis", "Excel"]},
+      {"title": "Investment Memo", "description": "Write an investment recommendation memo backed by your own financial model.", "skills_learned": ["Financial Analysis", "Communication"]}
+    ]
+  },
+  "Junior Accountant": {
+    "beginner": [
+      {"title": "Bookkeeping Practice Set", "description": "Record a month of sample transactions into ledgers and trial balance.", "skills_learned": ["Accounting", "Excel"]},
+      {"title": "Invoice Tracker", "description": "Build a simple spreadsheet to track invoices issued, paid and overdue.", "skills_learned": ["Excel", "Accounting"]},
+      {"title": "Petty Cash Log", "description": "Maintain and reconcile a sample petty cash register.", "skills_learned": ["Accounting"]}
+    ],
+    "intermediate": [
+      {"title": "Bank Reconciliation Exercise", "description": "Reconcile a sample bank statement against internal cash records.", "skills_learned": ["Accounting", "Excel"]},
+      {"title": "Tally ERP Practice Set", "description": "Enter a full accounting cycle for a sample business in Tally ERP.", "skills_learned": ["Accounting"]},
+      {"title": "Payroll Calculation Sheet", "description": "Build a payroll sheet handling deductions, taxes and net pay for a small team.", "skills_learned": ["Accounting", "Excel"]}
+    ],
+    "advanced": [
+      {"title": "GST/Tax Filing Simulation", "description": "Prepare a simulated GST return from a set of sample invoices.", "skills_learned": ["Accounting"]},
+      {"title": "Year-End Closing Exercise", "description": "Perform a simplified year-end close: adjustments, accruals and final statements.", "skills_learned": ["Accounting", "Financial Analysis"]},
+      {"title": "Internal Audit Checklist", "description": "Design a checklist and sample walkthrough for a small internal audit.", "skills_learned": ["Accounting", "Communication"]}
+    ]
+  },
+  "Marketing Executive": {
+    "beginner": [
+      {"title": "Social Media Content Calendar", "description": "Plan a month of content for a sample brand across 2-3 platforms.", "skills_learned": ["Marketing", "Communication"]},
+      {"title": "Simple Landing Page", "description": "Design a promotional landing page in Canva or similar with clear CTAs.", "skills_learned": ["Graphic Design", "Marketing"]},
+      {"title": "Competitor Analysis", "description": "Research and summarise 3-5 competitors' marketing strategies for a chosen niche.", "skills_learned": ["Marketing", "Data Analysis"]}
+    ],
+    "intermediate": [
+      {"title": "Email Marketing Campaign", "description": "Design and mock-send a 3-email nurture sequence with subject-line A/B tests.", "skills_learned": ["Marketing", "Communication"]},
+      {"title": "Google Analytics Report", "description": "Set up tracking on a demo site and produce a traffic/conversion report.", "skills_learned": ["Data Analysis", "Marketing"]},
+      {"title": "Brand Style Guide", "description": "Create a mini brand guide covering tone, colours and messaging.", "skills_learned": ["Graphic Design", "Marketing"]}
+    ],
+    "advanced": [
+      {"title": "End-to-End Campaign Launch", "description": "Plan, execute and report on a small real or simulated marketing campaign.", "skills_learned": ["Marketing", "Data Analysis", "Communication"]},
+      {"title": "SEO Content Strategy", "description": "Research keywords and build a 3-month content plan targeting them.", "skills_learned": ["Marketing", "Data Analysis"]},
+      {"title": "Paid Ads Mini-Budget Test", "description": "Run a small-budget ad test (or simulate one) and analyse cost-per-result.", "skills_learned": ["Marketing", "Data Analysis"]}
+    ]
+  },
+  "Sales Assistant": {
+    "beginner": [
+      {"title": "Sales Pitch Script", "description": "Write and rehearse a pitch script for a sample product.", "skills_learned": ["Communication", "Marketing"]},
+      {"title": "Customer FAQ Sheet", "description": "Create a FAQ/objection-handling sheet for a sample product line.", "skills_learned": ["Communication"]},
+      {"title": "Lead Tracking Spreadsheet", "description": "Build a simple spreadsheet to log and follow up on sample leads.", "skills_learned": ["MS Office"]}
+    ],
+    "intermediate": [
+      {"title": "Mock CRM Setup", "description": "Set up a free CRM tool with sample contacts, deals and follow-up reminders.", "skills_learned": ["MS Office", "Communication"]},
+      {"title": "Role-Play Objection Handling", "description": "Record mock sales calls practicing common objections and closes.", "skills_learned": ["Communication", "Problem Solving"]},
+      {"title": "Product Comparison Sheet", "description": "Build a sheet comparing your product against 2-3 competitors for sales conversations.", "skills_learned": ["Marketing", "MS Office"]}
+    ],
+    "advanced": [
+      {"title": "Sales Funnel Analysis", "description": "Track a sample funnel from lead to close and identify drop-off points.", "skills_learned": ["Data Analysis", "Communication"]},
+      {"title": "Retail POS Simulation", "description": "Practice a full checkout/inventory workflow using a sample POS system.", "skills_learned": ["MS Office"]},
+      {"title": "Territory Sales Plan", "description": "Draft a quarterly sales plan with targets for a sample territory.", "skills_learned": ["Communication", "Leadership"]}
+    ]
+  },
+  "Clerk": {
+    "beginner": [
+      {"title": "Filing System Redesign", "description": "Design a logical folder/filing structure for a sample office's documents.", "skills_learned": ["MS Office"]},
+      {"title": "Correspondence Templates", "description": "Create a set of reusable letter/email templates for common office needs.", "skills_learned": ["Communication", "MS Office"]},
+      {"title": "Attendance Register", "description": "Build a spreadsheet-based attendance/leave tracker.", "skills_learned": ["Excel"]}
+    ],
+    "intermediate": [
+      {"title": "Office Supply Tracker", "description": "Track stock levels and reorder points for office supplies in Excel.", "skills_learned": ["Excel", "MS Office"]},
+      {"title": "Basic Accounting Entries Log", "description": "Record simple day-to-day office expense entries in a ledger format.", "skills_learned": ["Accounting", "Excel"]},
+      {"title": "Meeting Minutes Template", "description": "Design a standard template and take structured minutes for sample meetings.", "skills_learned": ["Communication"]}
+    ],
+    "advanced": [
+      {"title": "Document Digitisation Workflow", "description": "Design an end-to-end workflow to scan, name and archive physical documents.", "skills_learned": ["MS Office"]},
+      {"title": "Basic Tally Practice", "description": "Enter a month of sample office transactions into Tally.", "skills_learned": ["Accounting"]},
+      {"title": "SOP Handbook", "description": "Write a small SOP handbook covering common clerical tasks for new hires.", "skills_learned": ["Communication", "MS Office"]}
+    ]
+  },
+  "School Counselor": {
+    "beginner": [
+      {"title": "Active Listening Journal", "description": "Practice and reflect on active-listening techniques across mock conversations.", "skills_learned": ["Communication"]},
+      {"title": "Resource Directory", "description": "Compile a directory of local mental-health and academic support resources.", "skills_learned": ["Communication"]},
+      {"title": "Career Interest Survey", "description": "Design a short survey to help students identify career interests.", "skills_learned": ["Communication", "Leadership"]}
+    ],
+    "intermediate": [
+      {"title": "Peer Mediation Framework", "description": "Design a step-by-step framework for mediating conflicts between students.", "skills_learned": ["Leadership", "Problem Solving"]},
+      {"title": "Study Skills Workshop", "description": "Plan and outline a workshop teaching time-management and study skills.", "skills_learned": ["Communication", "Leadership"]},
+      {"title": "Case Notes Template", "description": "Design a structured, confidential template for documenting counselling sessions.", "skills_learned": ["Communication"]}
+    ],
+    "advanced": [
+      {"title": "Crisis Response Plan", "description": "Draft a school-level crisis response protocol based on best practices.", "skills_learned": ["Leadership", "Problem Solving"]},
+      {"title": "Group Counselling Curriculum", "description": "Design a multi-session group counselling curriculum on a chosen theme.", "skills_learned": ["Leadership", "Communication"]},
+      {"title": "Parent-Teacher Workshop", "description": "Plan a workshop helping parents support students' mental wellbeing.", "skills_learned": ["Communication", "Leadership"]}
+    ]
+  },
+  "Professor": {
+    "beginner": [
+      {"title": "Lecture Slide Deck", "description": "Design a clear, well-structured lecture deck on a topic in your field.", "skills_learned": ["Communication"]},
+      {"title": "Literature Review Summary", "description": "Summarise 5-10 papers on a chosen research topic.", "skills_learned": ["Data Analysis", "Communication"]},
+      {"title": "Course Syllabus Draft", "description": "Draft a syllabus for an introductory course in your subject.", "skills_learned": ["Communication"]}
+    ],
+    "intermediate": [
+      {"title": "Guest Lecture / Seminar", "description": "Prepare and (if possible) deliver a guest lecture or seminar talk.", "skills_learned": ["Communication", "Leadership"]},
+      {"title": "Research Proposal", "description": "Write a structured research proposal including methodology and expected outcomes.", "skills_learned": ["Data Analysis", "Communication"]},
+      {"title": "Rubric-Based Assessment Design", "description": "Design a fair, rubric-based assessment for a course module.", "skills_learned": ["Communication"]}
+    ],
+    "advanced": [
+      {"title": "Co-authored Paper Draft", "description": "Draft a paper (solo or with a mentor) for submission to a journal or conference.", "skills_learned": ["Data Analysis", "Communication"]},
+      {"title": "Full Course Curriculum", "description": "Design a full-semester curriculum with weekly objectives and assessments.", "skills_learned": ["Leadership", "Communication"]},
+      {"title": "Conference Presentation", "description": "Prepare a conference-style presentation of a research idea or result.", "skills_learned": ["Communication", "Leadership"]}
+    ]
+  },
+  "Research Scientist": {
+    "beginner": [
+      {"title": "Public Dataset Analysis", "description": "Clean and analyse a public dataset relevant to your research area.", "skills_learned": ["Data Analysis", "Python"]},
+      {"title": "Literature Survey", "description": "Survey and summarise recent papers on a narrow research question.", "skills_learned": ["Communication", "Data Analysis"]},
+      {"title": "Reproduce a Published Result", "description": "Reproduce the core result of a published paper using open data/code.", "skills_learned": ["Python", "Data Analysis"]}
+    ],
+    "intermediate": [
+      {"title": "Experimental Design Proposal", "description": "Design a controlled experiment to test a specific hypothesis.", "skills_learned": ["Problem Solving", "Data Analysis"]},
+      {"title": "Statistical Analysis Report", "description": "Apply hypothesis testing and statistical modelling to a dataset, with a written report.", "skills_learned": ["Data Analysis", "Python"]},
+      {"title": "Research Tooling Script", "description": "Build a reusable script/tool that speeds up a common analysis task in your field.", "skills_learned": ["Python", "Problem Solving"]}
+    ],
+    "advanced": [
+      {"title": "Independent Research Project", "description": "Carry out a small end-to-end research project from question to write-up.", "skills_learned": ["Data Analysis", "Python", "Communication"]},
+      {"title": "Preprint or Conference Submission", "description": "Prepare your research project as a submission-ready preprint or short paper.", "skills_learned": ["Communication", "Data Analysis"]},
+      {"title": "Collaborative Research Tool", "description": "Build a shared tool/dashboard that a small research team could use for ongoing analysis.", "skills_learned": ["Python", "Data Analysis", "Teamwork"]}
+    ]
+  }
+}

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mock Interview | CareerAI</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='features.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='extras.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='scroll-effects.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="sidebar">
+
+        <div class="logo">
+            <h2>🧭 CareerAI</h2>
+            <p>Find Your Future</p>
+        </div>
+
+        {% set active='interview' %}{% include '_nav.html' %}
+
+    </div>
+
+    <div class="main">
+
+
+        <span class="eyebrow">{{ mode }}</span>
+        <h1>Mock Interview · {{ career }}</h1>
+        <p class="lede">Answer questions for your predicted career in your own words and get scored feedback after each one.</p>
+
+        {% include '_flash.html' %}
+
+        {% if not state %}
+        <form method="POST" action="/interview/start" class="panel-form">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <div class="form-grid">
+                <div><label for="kind">Type</label>
+                    <select id="kind" name="kind">
+                        <option value="mixed">Mixed (technical + HR)</option>
+                        <option value="technical">Technical</option>
+                        <option value="hr">HR / behavioural</option>
+                    </select></div>
+                <div><label for="count">Questions</label>
+                    <select id="count" name="count"><option>3</option><option selected>5</option><option>8</option></select></div>
+            </div>
+            <button type="submit" class="cta-link">🎤 Start interview</button>
+        </form>
+
+        {% if history %}
+        <h2 class="section-title">Your past interviews</h2>
+        <table class="data-table">
+            <tr><th>Date (UTC)</th><th>Career</th><th>Type</th><th>Questions</th><th>Avg score</th></tr>
+            {% for h in history %}<tr><td>{{ h.created_at[:16] }}</td><td>{{ h.career }}</td><td>{{ h.kind }}</td><td>{{ h.num_questions }}</td><td>{{ h.avg_score }}/10</td></tr>{% endfor %}
+        </table>
+        {% endif %}
+
+        {% else %}
+
+        {% set answered = state.answers|length %}
+        {% set total = state.questions|length %}
+
+        <div class="tracker-card">
+            <div class="tracker-label">Question {{ [answered + 1, total]|min }} of {{ total }}</div>
+            <div class="bar-track"><div class="bar-fill" style="width:{{ (answered / total * 100)|round|int }}%"></div></div>
+        </div>
+
+        {% for a in state.answers %}
+        {% set qq = state.questions[loop.index0] %}
+        <div class="qa-card">
+            <div class="qa-q">Q{{ loop.index }}. {{ qq.q }}</div>
+            <div class="qa-a">{{ a.answer or '(no answer)' }}</div>
+            <div class="qa-score {% if a.result.score >= 7 %}good{% elif a.result.score >= 4 %}mid{% else %}low{% endif %}">
+                {{ a.result.score }}<small>/10</small></div>
+            {% if a.result.strengths %}<div class="qa-fb good"><strong>What worked</strong><ul>{% for x in a.result.strengths %}<li>{{ x }}</li>{% endfor %}</ul></div>{% endif %}
+            {% if a.result.improvements %}<div class="qa-fb bad"><strong>To improve</strong><ul>{% for x in a.result.improvements %}<li>{{ x }}</li>{% endfor %}</ul></div>{% endif %}
+            {% if a.result.ideal_points %}<div class="qa-fb"><strong>Points a strong answer covers</strong>
+                <div>{% for x in a.result.ideal_points %}<span class="skill-tag soft">{{ x }}</span>{% endfor %}</div></div>{% endif %}
+        </div>
+        {% endfor %}
+
+        {% if state.finished %}
+        {% set scores = state.answers|map(attribute='result.score')|list %}
+        <div class="score-card">
+            <div class="score-ring" style="--pct: {{ ((scores|sum / scores|length) * 10)|round|int }};">
+                <span class="score-number">{{ (scores|sum / scores|length)|round(1) }}</span></div>
+            <div class="score-sub">Average score out of 10 · {{ total }} questions</div>
+        </div>
+        <form method="POST" action="/interview/reset">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <button type="submit" class="cta-link">🔁 Start a new interview</button>
+        </form>
+        {% else %}
+        <form method="POST" action="/interview/answer" class="panel-form">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <div class="qa-q big">Q{{ answered + 1 }}. {{ state.questions[answered].q }}</div>
+            <textarea name="answer" rows="7" maxlength="3000" required autofocus
+                placeholder="Type your answer as if you were speaking to the interviewer. Aim for 4-6 sentences with a concrete example."></textarea>
+            <button type="submit" class="cta-link">Submit answer →</button>
+        </form>
+        <form method="POST" action="/interview/reset" class="inline-form">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <button type="submit" class="link-btn">Abandon this interview</button>
+        </form>
+        {% endif %}
+
+        {% endif %}
+
+
+    </div>
+
+</div>
+
+
+<script src="{{ url_for('static', filename='scroll.js') }}" defer></script>
+
+</body>
+</html>

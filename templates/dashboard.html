@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard | CareerAI</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='scroll-effects.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='extras.css') }}">
+</head>
+
+<body>
+
+<div class="dashboard-container">
+
+    <!-- Sidebar -->
+
+    <div class="sidebar">
+
+        <div class="logo-box">
+
+            <div class="logo-icon">🧭</div>
+
+            <div class="logo-text">
+                <h2>CareerAI</h2>
+                <p>Find Your Future</p>
+            </div>
+
+        </div>
+
+        <nav>
+
+            {% set active='dash' %}{% include '_nav.html' %}
+
+        </nav>
+
+    </div>
+
+    <!-- Main -->
+
+    <div class="dashboard-main">
+
+        <!-- Welcome -->
+
+        <div class="welcome-banner">
+
+            <h1>Welcome, {{ user_name }} 👋</h1>
+
+            <p>
+                Discover careers that match your skills, education and
+                interests using Artificial Intelligence.
+            </p>
+
+            <a href="/predict" class="btn">
+                {% if last_prediction %}Run Prediction Again{% else %}Start Prediction{% endif %} →
+            </a>
+
+        </div>
+
+        {% include '_flash.html' %}
+
+        <!-- Career Snapshot -->
+
+        {% if last_prediction %}
+
+        <div class="snapshot-card" data-reveal="up">
+
+            <div class="snapshot-label">Your Recommended Career</div>
+
+            <h2 class="snapshot-career">{{ last_prediction }}</h2>
+
+            <p class="snapshot-sub">
+                Based on your most recent profile
+                {% if last_education %}({{ last_education }}{% if last_skills %}, {{ last_skills[0] }}{% endif %}){% endif %}.
+            </p>
+
+            <div class="snapshot-actions">
+                <a href="/roadmap" class="btn">🗺 View Your Roadmap</a>
+                <a href="/predict" class="btn secondary">🎯 Predict Again</a>
+            </div>
+
+        </div>
+
+        {% else %}
+
+        <div class="snapshot-card empty" data-reveal="up">
+
+            <div class="snapshot-label">No Prediction Yet</div>
+
+            <h2 class="snapshot-career">Your career hasn't been mapped yet</h2>
+
+            <p class="snapshot-sub">
+                Run the Career Prediction once and this card will show your
+                recommended role and a personalised roadmap.
+            </p>
+
+            <div class="snapshot-actions">
+                <a href="/predict" class="btn">🎯 Start Prediction →</a>
+            </div>
+
+        </div>
+
+        {% endif %}
+
+        {% if gap %}
+        <div class="stat-row" data-reveal="up">
+            <div class="stat-tile">
+                <div class="stat-label">Career readiness</div>
+                <div class="stat-value">{{ gap.readiness }}%</div>
+                <div class="bar-track"><div class="bar-fill" style="width:{{ gap.readiness }}%"></div></div>
+                <a href="/skill-gap">Skill gap →</a>
+            </div>
+            <div class="stat-tile">
+                <div class="stat-label">Roadmap progress</div>
+                <div class="stat-value">{{ roadmap_pct }}%</div>
+                <div class="bar-track"><div class="bar-fill" style="width:{{ roadmap_pct }}%"></div></div>
+                <a href="/roadmap">Tick off steps →</a>
+            </div>
+            <div class="stat-tile">
+                <div class="stat-label">Predictions made</div>
+                <div class="stat-value">{{ history_count }}</div>
+                <div class="stat-sub">see timeline below</div>
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Prediction history timeline -->
+
+        <div class="snapshot-card" id="history" data-reveal="up" style="margin-top:20px;">
+
+            <div class="snapshot-label">Prediction History</div>
+            <h2 class="snapshot-career" style="font-size:22px;">How your career fit has changed</h2>
+
+            {% if timeline %}
+
+            {% if spark %}
+            <div class="spark-wrap">
+                <svg viewBox="0 0 {{ spark.w }} {{ spark.h }}" class="spark" role="img"
+                     aria-label="Readiness score across your predictions">
+                    <polyline points="{{ spark.points }}" fill="none" stroke="var(--route)" stroke-width="2.5"
+                              stroke-linejoin="round" stroke-linecap="round"/>
+                    <circle cx="{{ spark.last[0] }}" cy="{{ spark.last[1] }}" r="4.5" fill="var(--beacon)"/>
+                </svg>
+                <div class="spark-caption">Readiness score over your last {{ history_count if history_count < 30 else 30 }} predictions</div>
+            </div>
+            {% endif %}
+
+            <ol class="timeline">
+                {% for h in timeline %}
+                <li>
+                    <div class="tl-dot {% if loop.first %}now{% endif %}"></div>
+                    <div class="tl-body">
+                        <div class="tl-head">
+                            <strong>{{ h.career }}</strong>
+                            {% if h.career_changed %}<span class="tl-badge change">career changed</span>{% endif %}
+                            {% if h.confidence is not none %}<span class="tl-badge">{{ h.confidence }}% confidence</span>{% endif %}
+                            {% if h.readiness is not none %}<span class="tl-badge ready">{{ h.readiness }}% ready</span>{% endif %}
+                        </div>
+                        <div class="tl-date">{{ h.created_at[:16] }} UTC · {{ h.education }}, CGPA {{ h.cgpa }}</div>
+                        {% if h.added %}<div class="tl-diff add">+ added {{ h.added|join(', ') }}</div>{% endif %}
+                        {% if h.removed %}<div class="tl-diff rem">− removed {{ h.removed|join(', ') }}</div>{% endif %}
+                        {% if h.first %}<div class="tl-diff">First prediction · skills: {{ h.skills|join(', ') }}</div>{% endif %}
+                    </div>
+                </li>
+                {% endfor %}
+            </ol>
+
+            {% else %}
+            <p class="snapshot-sub">No history yet. Every prediction you run is saved here, so you can watch your
+                recommended career and readiness change as you add skills.</p>
+            <div class="snapshot-actions"><a href="/predict" class="btn">🎯 Run your first prediction</a></div>
+            {% endif %}
+
+        </div>
+
+        <!-- New Feature Cards -->
+
+        <div class="snapshot-card" data-reveal="up" style="margin-top:20px;">
+
+            <div class="snapshot-label">Resume Analyzer</div>
+
+            <h2 class="snapshot-career" style="font-size:22px;">Let your resume fill the form for you</h2>
+
+            <p class="snapshot-sub">
+                Upload a PDF or DOCX resume and we'll extract your education,
+                skills, certifications and CGPA automatically.
+            </p>
+
+            <div class="snapshot-actions">
+                <a href="/resume-upload" class="btn">📄 Upload Resume</a>
+            </div>
+
+        </div>
+
+        {% if last_prediction %}
+        <div class="snapshot-card" data-reveal="up" style="margin-top:20px;">
+
+            <div class="snapshot-label">Skill Gap Analysis</div>
+
+            <h2 class="snapshot-career" style="font-size:22px;">See what's missing for {{ last_prediction }}</h2>
+
+            <p class="snapshot-sub">
+                Compare your skills against what this role typically needs and
+                get a personalised readiness score.
+            </p>
+
+            <div class="snapshot-actions">
+                <a href="/skill-gap" class="btn secondary">📊 View Skill Gap</a>
+            </div>
+
+        </div>
+        {% endif %}
+
+        {% if last_prediction and resume_uploaded %}
+        <div class="snapshot-card" data-reveal="up" style="margin-top:20px;">
+
+            <div class="snapshot-label">ATS Resume Score</div>
+
+            <h2 class="snapshot-career" style="font-size:22px;">Check your resume against {{ last_prediction }}</h2>
+
+            <p class="snapshot-sub">
+                Get a 0-100 ATS score, missing keywords, and specific tips to
+                improve your resume for this role.
+            </p>
+
+            <div class="snapshot-actions">
+                <a href="/ats-score" class="btn secondary">🧾 View ATS Score</a>
+            </div>
+
+        </div>
+        {% endif %}
+
+        {% if last_prediction %}
+        <div class="snapshot-card" data-reveal="up" style="margin-top:20px;">
+
+            <div class="snapshot-label">Project Recommendations</div>
+
+            <h2 class="snapshot-career" style="font-size:22px;">Build proof of your skills</h2>
+
+            <p class="snapshot-sub">
+                Beginner, intermediate and advanced project ideas tailored to
+                {{ last_prediction }}.
+            </p>
+
+            <div class="snapshot-actions">
+                <a href="/projects" class="btn secondary">🛠 View Projects</a>
+            </div>
+
+        </div>
+
+        <div class="snapshot-card" data-reveal="up" style="margin-top:20px;">
+
+            <div class="snapshot-label">Job Matching</div>
+
+            <h2 class="snapshot-career" style="font-size:22px;">Explore roles matched to your skills</h2>
+
+            <p class="snapshot-sub">
+                Live job listings (or sample data when offline) for {{ last_prediction }},
+                ranked by how well your skills match each one.
+            </p>
+
+            <div class="snapshot-actions">
+                <a href="/jobs" class="btn secondary">💼 View Jobs</a>
+            </div>
+
+        </div>
+        {% endif %}
+
+        {% if resume_uploaded %}
+        <div class="snapshot-card" data-reveal="up" style="margin-top:20px;">
+            <div class="snapshot-label">Job Description Match</div>
+            <h2 class="snapshot-career" style="font-size:22px;">Paste a job ad, see how your resume scores</h2>
+            <p class="snapshot-sub">Keywords are taken from the job description itself, then compared with your resume.</p>
+            <div class="snapshot-actions">
+                <a href="/jd-match" class="btn secondary">🔍 Match a Job</a>
+                <a href="/resume-improve" class="btn secondary">✨ Improve My Resume</a>
+            </div>
+        </div>
+        {% endif %}
+
+        {% if last_prediction %}
+        <div class="snapshot-card" data-reveal="up" style="margin-top:20px;">
+            <div class="snapshot-label">Mock Interview &amp; Market Trends</div>
+            <h2 class="snapshot-career" style="font-size:22px;">Practise and plan for {{ last_prediction }}</h2>
+            <p class="snapshot-sub">Answer questions for your target role and get scored feedback, then check demand and salary trends.</p>
+            <div class="snapshot-actions">
+                <a href="/interview" class="btn secondary">🎤 Start Interview</a>
+                <a href="/market-trends" class="btn secondary">📈 Market Trends</a>
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Tip -->
+
+        <div class="tip-card" data-reveal="up">
+
+
+            <h3>💡 Career Tip</h3>
+
+            <p>
+                Keep improving your technical skills, complete certifications,
+                build projects and maintain a strong portfolio to increase your
+                career opportunities.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+    <script src="{{ url_for('static', filename='scroll.js') }}" defer></script>
+
+</body>
+
+</html>

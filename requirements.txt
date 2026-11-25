@@ -1,0 +1,15 @@
+Flask
+Flask-Bcrypt
+pandas
+openpyxl
+scikit-learn
+pdfplumber
+python-docx
+pypdf
+requests
+PyMySQL
+cryptography   # needed by PyMySQL for MySQL 8 / MariaDB password auth
+
+# Optional: real sentence-embedding (SBERT) skill matching. Without it the app
+# uses the built-in alias + n-gram matcher automatically.
+# sentence-transformers

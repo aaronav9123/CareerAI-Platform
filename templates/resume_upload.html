@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Analyzer | CareerAI</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='predict.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='scroll-effects.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='extras.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+
+        <div class="logo">
+            <h2>🧭 CareerAI</h2>
+            <p>Find Your Future</p>
+        </div>
+
+        {% set active='resume' %}{% include '_nav.html' %}
+
+    </div>
+
+    <!-- Main -->
+    <div class="main">
+
+        <div class="header">
+            <h1>📄 Resume Analyzer</h1>
+            <p>
+                Upload your resume as a PDF or DOCX file. We'll extract your
+                education, specialization, skills, certifications and CGPA,
+                then pre-fill the Career Prediction form for you — you can
+                still edit everything before predicting.
+            </p>
+        </div>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <div class="form-error" data-reveal="up" style="background:rgba(79,209,197,.1); border-color:rgba(79,209,197,.35); color:var(--route);">
+                ✅ {{ messages[0] }}
+            </div>
+            {% endif %}
+        {% endwith %}
+
+        {% if error %}
+        <div class="form-error" data-reveal="up">
+            ⚠️ {{ error }}
+        </div>
+        {% endif %}
+
+        <form method="POST" enctype="multipart/form-data">
+<input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+            <div class="card" data-reveal="up">
+
+                <h2>Upload Your Resume</h2>
+                <p class="hint">Accepted formats: PDF, DOCX. Max size 5 MB.</p>
+
+                <input type="file" name="resume" accept=".pdf,.docx" required>
+
+                <button class="predict-btn" type="submit">
+                    📤 Analyze Resume
+                </button>
+
+            </div>
+
+        </form>
+
+        <div class="card" data-reveal="up" style="margin-top:24px;">
+            <h2>Prefer to type it in yourself?</h2>
+            <p class="hint" style="margin-bottom:16px;">
+                No problem — you can skip the upload and fill in the Career
+                Prediction form manually.
+            </p>
+            <a href="/predict" class="roadmap-btn" style="display:inline-block;">
+                🎯 Go to Career Prediction
+            </a>
+        </div>
+
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='scroll.js') }}" defer></script>
+
+</body>
+</html>

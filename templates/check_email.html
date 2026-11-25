@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check your email | CareerAI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='extras.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='scroll-effects.css') }}">
+</head>
+
+<body>
+
+<div class="auth-container">
+
+    <div class="auth-card" data-reveal="zoom">
+
+        <h2>📬 Check your email</h2>
+        {% if purpose == 'verify' %}
+        <p>We've sent a verification link to <strong>{{ email }}</strong>. Click it to activate your account (valid for 48 hours).</p>
+        {% else %}
+        <p>If an account exists for <strong>{{ email }}</strong>, a password-reset link is on its way (valid for 1 hour).</p>
+        {% endif %}
+
+        {% if dev_link %}
+        <div class="dev-box">
+            <strong>Developer mode</strong> - no email server is configured, so here is the link directly
+            (only shown when you run the app on your own computer):
+            <a href="{{ dev_link }}">{{ dev_link }}</a>
+        </div>
+        {% elif not sent %}
+        <p class="muted">Email isn't configured on this server yet, so ask the administrator for help if nothing arrives.</p>
+        {% endif %}
+
+        <div class="bottom-text"><a href="/login">Back to login</a></div>
+
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='scroll.js') }}" defer></script>
+
+</body>
+</html>
