@@ -8,8 +8,8 @@ python-docx
 pypdf
 requests
 PyMySQL
-cryptography   # needed by PyMySQL for MySQL 8 / MariaDB password auth
+cryptography
+gunicorn
 
-# Optional: real sentence-embedding (SBERT) skill matching. Without it the app
-# uses the built-in alias + n-gram matcher automatically.
+# Optional: real sentence-embedding (SBERT) skill matching.
 # sentence-transformers
